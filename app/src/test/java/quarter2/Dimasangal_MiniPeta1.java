@@ -16,3 +16,4 @@ public static void main(String[] args) {
     System.out.println("If I could, I would eat " + favFood + " every single day!");
 }
 }
+
