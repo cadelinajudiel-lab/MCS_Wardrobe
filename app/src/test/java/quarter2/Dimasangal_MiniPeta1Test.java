@@ -1,6 +1,9 @@
 package quarter2;
 
-public class MiniPetal_sample {
+import org.junit.Test;
+
+Test
+public class Dimasangal_MiniPeta1Test {
 
     public static void main(String[] args) {
         // 1. THE INPUT (Storing your personal details in variables)

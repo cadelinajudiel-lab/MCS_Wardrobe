@@ -1,4 +1,4 @@
-public class MiniPetal_sample {
+public class Lao_MiniPeta1 {
 
     public static void main(String[] args) {
         // 1. THE INPUT (Storing your personal details in variables)
