@@ -1,5 +1,3 @@
-package quarter2;
-
 public class MiniPetal_sample {
 
     public static void main(String[] args) {
