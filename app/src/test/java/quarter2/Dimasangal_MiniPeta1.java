@@ -1,10 +1,12 @@
+package quarter2;
+
 public class MiniPetal_sample {
 
     public static void main(String[] args) {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Lao";
-        String petName = "Grayham";
-        String favFood = "Kare-Kare";
+        String myName = "Denise";
+        String petName = "Lucky";
+        String favFood = "Takoyaki";
         int myAge = 16;
 
         // 2. THE OUTPUT (Printing to the console)
