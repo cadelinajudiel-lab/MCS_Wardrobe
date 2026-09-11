@@ -1,10 +1,15 @@
-public class Lao_MiniPeta1 {
+package quarter2;
 
-    public static void main(String[] args) {
+import org.junit.Test;
+
+public class Cadelina_MiniPeta1Test {
+
+    @Test
+    public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Lao";
-        String petName = "Grayham";
-        String favFood = "Kare-Kare";
+        String myName = "Judiel";
+        String petName = "Stark";
+        String favFood = "Mango";
         int myAge = 16;
 
         // 2. THE OUTPUT (Printing to the console)
