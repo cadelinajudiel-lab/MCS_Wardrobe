@@ -1,16 +1,16 @@
-package quarter2.MiniPeta1;
+package quarter2;
 
 import org.junit.Test;
 
-public class Cadelina_MiniPeta1Test {
+public class Dimasangal_MiniPeta1Test {
 
     @Test
     public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Judiel";
-        String petName = "Stark";
-        String favFood = "Mango";
-        int myAge = 16;
+        String myName = "Denise";
+        String petName = "Lucky";
+        String favFood = "Takoyaki";
+        int myAge = 15;
 
         // 2. THE OUTPUT (Printing to the console)
         System.out.println("--- MY DIGITAL PROFILE ---");

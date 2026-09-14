@@ -1,4 +1,4 @@
-package quarter2.MiniPeta1;
+package quarter2;
 
 import org.junit.Test;
 
