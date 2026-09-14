@@ -1,4 +1,4 @@
-package Quarter2_MiniPeta3;
+package com.example.myapplication;
 
 public class Argosino_PaymentMethod {
 }
