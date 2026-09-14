@@ -2,10 +2,10 @@ package quarter2;
 
 import org.junit.Test;
 
-Test
-public class Dimasangal_MiniPeta1Test {
+public class Cadelina_MiniPeta1Test {
 
-    public static void main(String[] args) {
+    @Test
+    public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
         String myName = "Denise";
         String petName = "Lucky";
