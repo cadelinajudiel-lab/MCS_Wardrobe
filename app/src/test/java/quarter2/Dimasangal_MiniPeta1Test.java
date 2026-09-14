@@ -1,32 +1,32 @@
 package quarter2;
 
-import org.junit.Test
+import org.junit.Test;
 
-class Dimasangal_MiniPeta1Test {
+public class Dimasangal_MiniPeta1Test {
     @Test
-    fun printMyProfile() {
+    public void testPrintMyProfile() {
         // Personal details
 
-        val myName = "Denise"
-        val petName = "Lucky"
-        val favFood = "Takoyaki"
-        val myAge = 16
+        String myName = "Denise";
+        String petName = "Lucky";
+        String favFood = "Takoyaki";
+        int myAge = 16;
 
         // Display profile
-        println("===== MY DIGITAL PROFILE =====")
+        System.out.println("===== MY DIGITAL PROFILE =====");
 
-        println(
+        System.out.println(
                 "Hello, my name is " + myName +
                         " and I am " + myAge + " years old."
-        )
+        );
 
-        println(
+        System.out.println(
                 "I have a wonderful pet named " + petName + "."
-        )
+        );
 
-        println(
+        System.out.println(
                 "If I could, I would eat " + favFood +
                         " every single day!"
-        )
+        );
     }
 }
