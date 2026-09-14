@@ -2,15 +2,15 @@ package quarter2;
 
 import org.junit.Test;
 
+Test
 public class Dimasangal_MiniPeta1Test {
 
-    @Test
-    public void testProfile() {
+    public static void main(String[] args) {
         // 1. THE INPUT (Storing your personal details in variables)
         String myName = "Denise";
         String petName = "Lucky";
         String favFood = "Takoyaki";
-        int myAge = 15;
+        int myAge = 16;
 
         // 2. THE OUTPUT (Printing to the console)
         System.out.println("--- MY DIGITAL PROFILE ---");
