@@ -10,7 +10,7 @@ public class Dimasangal_MiniPeta1Test {
         String myName = "Denise";
         String petName = "Lucky";
         String favFood = "Takoyaki";
-        int myAge = 16;
+        int myAge = 15;
 
         // 2. THE OUTPUT (Printing to the console)
         System.out.println("--- MY DIGITAL PROFILE ---");
