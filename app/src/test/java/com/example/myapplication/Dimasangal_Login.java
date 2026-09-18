@@ -13,7 +13,7 @@ public class Dimasangal_Login {
         String username = "DeniseDimasangal";
 
         // Stores password
-        String password = "DD92710";
+        String password = "DD092710";
 
         if (isReadyToLogin) {
             System.out.println("Login Successful");
