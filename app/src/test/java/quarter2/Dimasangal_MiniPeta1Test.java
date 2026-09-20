@@ -1,8 +1,7 @@
 package quarter2;
 
 import org.junit.Test
-
-class Dimasangal_MiniPeta1Test {
+public class Dimasangal_MiniPeta1Test {
     @Test
     fun printMyProfile() {
         // Personal details
