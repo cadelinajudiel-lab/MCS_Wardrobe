@@ -1,7 +1,7 @@
 package quarter2;
 
 import org.junit.Test;
-public class Dimasangal_MiniPeta1 {
+public class Lao_MiniPeta1 {
 
     @Test
     public void testProfile() {
