@@ -1,9 +1,8 @@
-package quarter2;
+package com.example.myapplication;
 
 import org.junit.Test;
 
 public class Cadelina_MiniPeta1Test {
-
     @Test
     public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)

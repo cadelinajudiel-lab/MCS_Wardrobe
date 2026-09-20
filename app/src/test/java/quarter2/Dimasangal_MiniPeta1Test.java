@@ -10,7 +10,7 @@ class Dimasangal_MiniPeta1Test {
         val myName = "Denise"
         val petName = "Lucky"
         val favFood = "Takoyaki"
-        val myAge = 15
+        val myAge = 16
 
         // Display profile
         println("===== MY DIGITAL PROFILE =====")
