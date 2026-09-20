@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package quarter2;
 
 import org.junit.Test;
 
