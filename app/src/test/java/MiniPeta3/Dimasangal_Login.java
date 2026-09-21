@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package MiniPeta3;
 
 import org.junit.Test;
 
