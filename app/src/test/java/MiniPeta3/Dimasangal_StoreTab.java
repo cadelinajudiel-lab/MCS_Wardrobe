@@ -6,10 +6,10 @@ public class Dimasangal_StoreTab {
 
     @Test
     public void main() {
-        boolean isStoreOpen = true;
+        boolean istheStoreOpen = true;
         String storeName = "MCS Wardrobe";
 
-        if (isStoreOpen) {
+        if (istheStoreOpen) {
             System.out.println("Welcome to " + storeName + "!");
 
             // Calling functions with store data
