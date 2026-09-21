@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package MiniPeta3;
 
 import org.junit.Test;
 
@@ -11,14 +11,14 @@ public class Dimasangal_StoreTab {
 
         if (isStoreOpen) {
             System.out.println("Welcome to " + storeName + "!");
-            
+
             // Calling functions with store data
             displayStoreCategory("School Uniforms");
-            
+
             displayProduct(101, "P.E. Shirt", 350.75, 50, "Medium");
             displayProduct(102, "School Blouse", 420.50, 20, "Small");
             displayProduct(103, "Necktie", 150.00, 0, "Standard");
-            
+
         } else {
             System.out.println("The store tab is currently closed.");
         }
