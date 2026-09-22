@@ -1,14 +1,27 @@
 package com.example.myapplication.minipeta3;
 
+import androidx.annotation.NonNull;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class
+public class Lao_AddToCart {
 
-Lao_AddToCart {
+    @Test
+    public void main() {
+        ShoppingCart cart = new ShoppingCart();
+        Product shirt = new Product("School Shirt", 250.00);
+        Product pants = new Product("School Pants", 350.00);
+
+        cart.addToCart(shirt);
+        cart.addToCart(pants);
+        cart.showCart();
+
+        cart.removeFromCart(shirt);
+        cart.showCart();
+    }
 }
-import ArrayList;{
-        import List;{
 
 class Product {
     private final String name;
@@ -30,7 +43,7 @@ class Product {
     @NonNull
     @Override
     public String toString() {
-        return name + " ($" + price + ")";
+        return name + " (₱" + price + ")";
     }
 }
 
@@ -63,6 +76,6 @@ class ShoppingCart {
         for (Product item : items) {
             System.out.println(" - " + item);
         }
-        System.out.printf("Total: $%.2f%n", getTotal());
+        System.out.printf("Total: ₱%.2f%n", getTotal());
     }
 }
