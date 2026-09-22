@@ -1,14 +1,14 @@
-package com.example.myapplication;
+package quarter2;
 
 import org.junit.Test;
+public class Lao_MiniPeta1 {
 
-public class Cadelina_MiniPeta1Test {
     @Test
     public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Judiel";
-        String petName = "Stark";
-        String favFood = "Mango";
+        String myName = "Clyde";
+        String petName = "Bebang";
+        String favFood = "Kare-kare";
         int myAge = 16;
 
         // 2. THE OUTPUT (Printing to the console)
@@ -18,3 +18,5 @@ public class Cadelina_MiniPeta1Test {
         System.out.println("If I could, I would eat " + favFood + " every single day!");
     }
 }
+
+
