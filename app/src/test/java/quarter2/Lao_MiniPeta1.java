@@ -1,16 +1,15 @@
-package quarter2.MiniPeta1;
+package quarter2;
 
 import org.junit.Test;
-
-public class Dimasangal_MiniPeta1Test {
+public class Lao_MiniPeta1 {
 
     @Test
     public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Denise";
-        String petName = "Lucky";
-        String favFood = "Takoyaki";
-        int myAge = 15;
+        String myName = "Clyde";
+        String petName = "Bebang";
+        String favFood = "Kare-kare";
+        int myAge = 16;
 
         // 2. THE OUTPUT (Printing to the console)
         System.out.println("--- MY DIGITAL PROFILE ---");
@@ -19,3 +18,5 @@ public class Dimasangal_MiniPeta1Test {
         System.out.println("If I could, I would eat " + favFood + " every single day!");
     }
 }
+
+
