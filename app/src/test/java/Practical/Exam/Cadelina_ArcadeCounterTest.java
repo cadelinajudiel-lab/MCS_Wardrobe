@@ -1,4 +1,15 @@
-package practical.exam;
+  package  com.example.myapplication.practical.exam
 
-public class Cadelina_ArcadeCounterTest {
+  import org.junit.Test;
+  import java.io.ByteArrayInputStream;
+  import java.util.Scanner;
+  public class Cadelina_ArcadeCounterTest {
+
+        public static void main(String[] args) {
+
+
+
+        }
+
+
 }
