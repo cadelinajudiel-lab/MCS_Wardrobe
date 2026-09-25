@@ -2,7 +2,7 @@ package quarter2;
 
 import org.junit.Test;
 
-public class Argosino_MiniPeta1 {1
+public class Argosino_MiniPeta1 {
     @Test
     public void testPrintMyProfile() {
         // Personal details
