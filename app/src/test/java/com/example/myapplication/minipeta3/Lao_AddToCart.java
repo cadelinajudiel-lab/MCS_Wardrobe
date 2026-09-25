@@ -79,4 +79,3 @@ class ShoppingCart {
         System.out.printf("Total: ₱%.2f%n", getTotal());
     }
 }
-

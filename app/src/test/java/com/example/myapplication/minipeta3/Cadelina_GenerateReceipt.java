@@ -1,13 +1,13 @@
-package minipeta3;
+package com.example.myapplication.minipeta3;
 
 import org.junit.Test;
 import java.util.Scanner;
 
-public class Cadelina_GenerateReceiptTest {
+public class Cadelina_GenerateReceipt {
     @Test
     public void testGenerateReceipt() {
-        // Simple test to check if it's found
-        System.out.println("Test is running");
+        // Run main method logic
+        main(new String[0]);
     }
 
     public static void main(String[] args) {

@@ -37,7 +37,7 @@ dependencies {
 
 tasks.register<JavaExec>("runGenerateReceipt") {
     group = "application"
-    mainClass.set("minipeta3.Cadelina_GenerateReceiptTest")
+    mainClass.set("com.example.myapplication.minipeta3.Cadelina_GenerateReceipt")
     val variant = "debug"
     classpath = project.files(
         tasks.named("compile${variant.replaceFirstChar { it.uppercase() }}UnitTestJavaWithJavac"),

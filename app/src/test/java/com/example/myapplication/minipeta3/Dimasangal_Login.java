@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.minipeta3;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class Dimasangal_Login {
         String username = "DeniseDimasangal";
 
         // Stores password
-        String password = "DD092710";
+        String password = "DD92710";
 
         if (isReadyToLogin) {
             System.out.println("Login Successful");

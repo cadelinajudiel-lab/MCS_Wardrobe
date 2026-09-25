@@ -1,14 +1,13 @@
-package quarter2.MiniPeta1;
+package com.example.myapplication.quarter2;
 
 import org.junit.Test;
 
-public class Lao_MiniPeta1Test {
-
+public class Cadelina_MiniPeta1Test {
     @Test
     public void testProfile() {
         // 1. THE INPUT (Storing your personal details in variables)
-        String myName = "Clyde";
-        String petName = "Petita";
+        String myName = "Judiel";
+        String petName = "Stark";
         String favFood = "Mango";
         int myAge = 16;
 

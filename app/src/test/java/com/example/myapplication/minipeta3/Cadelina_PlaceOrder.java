@@ -1,4 +1,4 @@
-package minipeta3;
+package com.example.myapplication.minipeta3;
 
 import org.junit.Test;
 import java.util.Scanner;
@@ -76,8 +76,8 @@ public class Cadelina_PlaceOrder {
 
             double change = cashAmount - totalAmount;
 
-            // Connect and pass the data to Cadelina_GenerateReceiptTest to print the final receipt
-            Cadelina_GenerateReceiptTest.printReceipt(uniformType, price, quantity, totalAmount, cashAmount, change);
+            // Connect and pass the data to Cadelina_GenerateReceipt to print the final receipt
+            Cadelina_GenerateReceipt.printReceipt(uniformType, price, quantity, totalAmount, cashAmount, change);
 
         } catch (Exception e) {
             System.out.println("An error occurred or input ended: " + e.getMessage());
