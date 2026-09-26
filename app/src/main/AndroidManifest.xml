@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MyApplication">
 
         <activity
-            android:name="quarter2.MiniPeta3.Dimasangal_Login"
+            android:name="quarter2.com.example.myapplication.minipeta3.Dimasangal_Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
