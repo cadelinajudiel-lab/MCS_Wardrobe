@@ -1,4 +1,4 @@
-package  com.example.myapplication.practical.exam
+package  com.example.myapplication.practical.exam;
 
 import org.junit.Test;
 import java.io.ByteArrayInputStream;
