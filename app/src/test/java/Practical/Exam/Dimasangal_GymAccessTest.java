@@ -1,35 +1,57 @@
 package Practical.Exam;
 
+import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class Dimasangal_GymAccessTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void TestGymMenu() {
 
-        Scanner scanner = new Scanner(System.in);
+        StringBuilder automatedInput = new StringBuilder();
+
+        System.out.println("=== GENERATING GYM ACCESS TEST DATA ===");
+
+        // Register Member
+        automatedInput.append("1\n");
+        automatedInput.append("Denise\n");
+        automatedInput.append("2\n");
+
+        // Check Access
+        automatedInput.append("2\n");
+        automatedInput.append("15\n");
+
+        // Exit
+        automatedInput.append("3\n");
+
+        System.out.println("=== TEST DATA GENERATION COMPLETE ===");
+
+        ByteArrayInputStream inputStream =
+                new ByteArrayInputStream(automatedInput.toString().getBytes());
+
+        Scanner scanner = new Scanner(inputStream);
 
         int choice;
 
         do {
+
             System.out.println("\n=== GYM ACCESS MENU ===");
             System.out.println("1. Register Member");
             System.out.println("2. Check Access");
             System.out.println("3. Exit");
-            System.out.print("Enter Choice: ");
 
             choice = scanner.nextInt();
-            scanner.nextLine(); // Clear buffer
+            scanner.nextLine();
 
             switch (choice) {
 
                 case 1:
 
-                    System.out.print("Enter Member Name: ");
                     String memberName = scanner.nextLine();
-
-                    System.out.print("Enter Membership Type (1-Regular, 2-Premium): ");
                     int membershipType = scanner.nextInt();
-                    scanner.nextLine(); // Clear buffer
+                    scanner.nextLine();
 
                     double membershipFee;
 
@@ -39,19 +61,14 @@ public class Dimasangal_GymAccessTest {
                         membershipFee = 1000.00;
                     }
 
-                    System.out.println("\n=== MEMBER DETAILS ===");
-                    System.out.println("Name: " + memberName);
+                    System.out.println("Member Registered: " + memberName);
                     System.out.println("Membership Fee: PHP " + membershipFee);
-
                     break;
 
                 case 2:
 
-                    System.out.print("Enter Number of Visits This Month: ");
                     int visits = scanner.nextInt();
-                    scanner.nextLine(); // Clear buffer
-
-                    System.out.println("\n=== ACCESS STATUS ===");
+                    scanner.nextLine();
 
                     if (visits >= 12) {
                         System.out.println("VIP Access Granted");
@@ -62,12 +79,10 @@ public class Dimasangal_GymAccessTest {
                     break;
 
                 case 3:
-
                     System.out.println("Thank you for using Gym Access System!");
                     break;
 
                 default:
-
                     System.out.println("Invalid Choice!");
             }
 
