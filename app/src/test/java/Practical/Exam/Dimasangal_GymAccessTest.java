@@ -18,29 +18,56 @@ public class Dimasangal_GymAccessTest {
             System.out.print("Enter Choice: ");
 
             choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Clear buffer
 
             switch (choice) {
 
                 case 1:
+
                     System.out.print("Enter Member Name: ");
                     String memberName = scanner.nextLine();
 
-                    System.out.println("Member Registered: " + memberName);
+                    System.out.print("Enter Membership Type (1-Regular, 2-Premium): ");
+                    int membershipType = scanner.nextInt();
+                    scanner.nextLine(); // Clear buffer
+
+                    double membershipFee;
+
+                    if (membershipType == 1) {
+                        membershipFee = 500.00;
+                    } else {
+                        membershipFee = 1000.00;
+                    }
+
+                    System.out.println("\n=== MEMBER DETAILS ===");
+                    System.out.println("Name: " + memberName);
+                    System.out.println("Membership Fee: PHP " + membershipFee);
+
                     break;
 
                 case 2:
-                    System.out.print("Enter Member Name: ");
-                    String checkName = scanner.nextLine();
 
-                    System.out.println("Access Granted for " + checkName);
+                    System.out.print("Enter Number of Visits This Month: ");
+                    int visits = scanner.nextInt();
+                    scanner.nextLine(); // Clear buffer
+
+                    System.out.println("\n=== ACCESS STATUS ===");
+
+                    if (visits >= 12) {
+                        System.out.println("VIP Access Granted");
+                    } else {
+                        System.out.println("Regular Access Granted");
+                    }
+
                     break;
 
                 case 3:
+
                     System.out.println("Thank you for using Gym Access System!");
                     break;
 
                 default:
+
                     System.out.println("Invalid Choice!");
             }
 
