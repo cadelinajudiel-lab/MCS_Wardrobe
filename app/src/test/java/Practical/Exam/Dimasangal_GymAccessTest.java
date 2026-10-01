@@ -56,7 +56,7 @@ public class Dimasangal_GymAccessTest {
                     double membershipFee;
 
                     if (membershipType == 1) {
-                        membershipFee = 500.00;
+                        membershipFee = 400.00;
                     } else {
                         membershipFee = 1000.00;
                     }
