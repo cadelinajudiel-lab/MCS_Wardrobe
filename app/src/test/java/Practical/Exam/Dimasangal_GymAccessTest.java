@@ -1,4 +1,4 @@
-package Practical.Exam;
+package practical.exam;
 
 import org.junit.Test;
 
