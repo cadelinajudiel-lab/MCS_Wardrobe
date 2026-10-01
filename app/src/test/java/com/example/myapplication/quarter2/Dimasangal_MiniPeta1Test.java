@@ -1,6 +1,7 @@
-package quarter2;
+package com.example.myapplication.quarter2;
 
 import org.junit.Test;
+
 public class Dimasangal_MiniPeta1Test {
 
         @Test

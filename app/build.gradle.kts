@@ -22,8 +22,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
@@ -37,7 +37,7 @@ dependencies {
 
 tasks.register<JavaExec>("runGenerateReceipt") {
     group = "application"
-    mainClass.set("com.example.myapplication.Cadelina_GenerateReceipt")
+    mainClass.set("com.example.myapplication.minipeta3.Cadelina_GenerateReceipt")
     val variant = "debug"
     classpath = project.files(
         tasks.named("compile${variant.replaceFirstChar { it.uppercase() }}UnitTestJavaWithJavac"),
