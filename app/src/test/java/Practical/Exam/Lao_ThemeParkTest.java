@@ -1,4 +1,6 @@
-public class Main {
+package practical.exam;
+
+public class Lao_ThemeParkTest {
     private boolean isEngineRunning = false;
     private boolean isBrakeEngaged = true;
     private int currentPositionMeters = 0;
@@ -42,11 +44,12 @@ public class Main {
         System.out.println("Ride safely stopped at station. Safe for unboarding.");
     }
 
-    // Main execution point matching the file name Main.java
+    // Main execution point matching the file name
     public static void main(String[] args) {
-        Main coaster = new Main();
+        Lao_ThemeParkTest coaster = new Lao_ThemeParkTest();
 
         coaster.startEngine();            // Start motor
         coaster.advanceRide(250);         // Mid-course
         coaster.advanceRide(250);         // Reaches end -> automatically triggers applyBrakes()
-
+    }
+}
