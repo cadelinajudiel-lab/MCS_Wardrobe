@@ -1,8 +1,35 @@
-package  com.example.myapplication.practical.exam;
+package com.example.myapplication.practical.exam;
 
 import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
+
+class ArcadeMenu {
+    public void start(Scanner scanner) {
+        int choice;
+        do {
+            System.out.println("1. Buy Tokens");
+            System.out.println("2. Claim Prize");
+            System.out.println("3. Exit");
+            if (!scanner.hasNextInt()) break;
+            choice = scanner.nextInt();
+            if (choice == 1) {
+                System.out.println("Tokens purchased.");
+            } else if (choice == 2) {
+                if (scanner.hasNextInt()) {
+                    int tickets = scanner.nextInt();
+                    if (tickets >= 500) {
+                        System.out.println("Teddy Bear Won");
+                    } else {
+                        System.out.println("Keep Playing");
+                    }
+                }
+            } else if (choice == 3) {
+                System.out.println("Exiting...");
+            }
+        } while (choice != 3);
+    }
+}
 
 public class Cadelina_ArcadeCounterTest {
 
