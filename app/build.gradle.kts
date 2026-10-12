@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 37
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
-        targetSdk = 37
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -28,9 +28,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.activity.ktx)
     implementation(libs.appcompat)
-    implementation(libs.constraintlayout)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
@@ -39,12 +37,12 @@ dependencies {
 
 tasks.register<JavaExec>("runGenerateReceipt") {
     group = "application"
-    description = "Generates receipt"
     mainClass.set("com.example.myapplication.minipeta3.Cadelina_GenerateReceipt")
     val variant = "debug"
     classpath = project.files(
         tasks.named("compile${variant.replaceFirstChar { it.uppercase() }}UnitTestJavaWithJavac"),
-        configurations.getByName("${variant}UnitTestRuntimeClasspath"),
+        configurations.getByName("${variant}UnitTestRuntimeClasspath")
     )
     standardInput = System.`in`
 }
+
