@@ -1,8 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class login extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
-    private CheckBox cbRemember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class login extends AppCompatActivity {
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-        cbRemember = findViewById(R.id.cbRemember);
         TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
         TextView tvSignUp = findViewById(R.id.tvSignUp);
         Button btnLogin = findViewById(R.id.btnLogin);
@@ -33,12 +31,13 @@ public class login extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
-            boolean remember = cbRemember.isChecked();
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(login.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(login.this, "Logging in... (Remember me: " + remember + ")", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login.this, "Logging in...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(login.this, PlaceOrder.class);
+                startActivity(intent);
             }
         });
 
@@ -51,7 +50,7 @@ public class login extends AppCompatActivity {
         );
 
         ivFacebook.setOnClickListener(v ->
-                Toast.makeText(login.this, "Facebook, Google, or Apple login clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(login.this, "Facebook login clicked", Toast.LENGTH_SHORT).show()
         );
 
         ivGoogle.setOnClickListener(v ->

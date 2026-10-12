@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <!-- Login Screen Strings -->
+    <string name="login_title">Login</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_button">LOGIN</string>
+    <string name="or_sign_in_with">or sign in with</string>
+    <string name="cd_facebook">Facebook Sign In</string>
+    <string name="cd_google">Google Sign In</string>
+    <string name="cd_apple">Apple Sign In</string>
+    <string name="dont_have_account">Don\'t have an account? </string>
+    <string name="sign_up">Sign Up</string>
+
+    <!-- Place Order Screen Strings -->
+    <string name="description_title">Description</string>
+    <string name="product_blouse_title">Long Sleeve School Blouse</string>
+    <string name="product_blouse_description">Stay neat, comfortable, and ready for class with this classic long sleeve school blouse. Made from soft, breathable, and durable fabric. It provides all-day comfort while maintaining a clean and professional appearance. Designed with a tailored fit and quality stitching, this blouse is perfect for daily school wear and matches your official school uniform. Available in various sizes for a comfortable and polished fit.</string>
+    <string name="place_order">PLACE ORDER</string>
+    <string name="product_blouse_desc_cd">Long Sleeve School Blouse Image</string>
 </resources>

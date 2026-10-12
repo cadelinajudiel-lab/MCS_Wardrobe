@@ -6,12 +6,22 @@
     android:orientation="vertical"
     android:background="#6EC1F5">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <!-- Top Logo Section -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="216dp"
-        android:contentDescription="@null"
-        app:srcCompat="@drawable/img" />
+        android:layout_height="220dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/img_1" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
