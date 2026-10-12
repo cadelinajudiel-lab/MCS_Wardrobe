@@ -1,0 +1,43 @@
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.card.MaterialCardView;
+
+public class GenerateReceipt extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_generate_receipt);
+
+        Button btnPrintReceipt = findViewById(R.id.btnPrintReceipt);
+        MaterialCardView cardQrCode = findViewById(R.id.cardQrCode);
+        ImageView ivReceiptLogo = findViewById(R.id.ivReceiptLogo);
+
+        // Handle Print / Download Receipt action
+        if (btnPrintReceipt != null) {
+            btnPrintReceipt.setOnClickListener(v ->
+                Toast.makeText(GenerateReceipt.this, "Printing / Saving Receipt to Device...", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Handle QR Code click action
+        if (cardQrCode != null) {
+            cardQrCode.setOnClickListener(v ->
+                Toast.makeText(GenerateReceipt.this, "Receipt QR Code Verified: #MCS-2025-0982", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Handle Logo click action
+        if (ivReceiptLogo != null) {
+            ivReceiptLogo.setOnClickListener(v ->
+                Toast.makeText(GenerateReceipt.this, "Manila Cathedral School Uniform Store", Toast.LENGTH_SHORT).show()
+            );
+        }
+    }
+}

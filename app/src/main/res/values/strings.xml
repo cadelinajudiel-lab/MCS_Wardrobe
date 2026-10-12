@@ -21,4 +21,20 @@
     <string name="product_blouse_description">Stay neat, comfortable, and ready for class with this classic long sleeve school blouse. Made from soft, breathable, and durable fabric. It provides all-day comfort while maintaining a clean and professional appearance. Designed with a tailored fit and quality stitching, this blouse is perfect for daily school wear and matches your official school uniform. Available in various sizes for a comfortable and polished fit.</string>
     <string name="place_order">PLACE ORDER</string>
     <string name="product_blouse_desc_cd">Long Sleeve School Blouse Image</string>
+
+    <!-- Generate Receipt Screen Strings -->
+    <string name="receipt_school_title">MANILA CATHEDRAL SCHOOL</string>
+    <string name="receipt_store_subtitle">UNIFORM STORE</string>
+    <string name="receipt_item_details_header">ITEM DETAILS:</string>
+    <string name="receipt_item_name">• MCS SHS SCHOOL UNIFORM</string>
+    <string name="receipt_size">• Size: SMALL (S)</string>
+    <string name="receipt_color">• Color: WHITE</string>
+    <string name="receipt_quantity">• Quantity: 1</string>
+    <string name="receipt_unit_price">• Unit Price: ₱690.00</string>
+    <string name="receipt_price_vat_inc">• Price (VAT Inclusive): ₱690.00</string>
+    <string name="receipt_vat">• VAT (12%): ₱69.64</string>
+    <string name="receipt_total">Total Amount: ₱690.00</string>
+    <string name="receipt_qr_code_label">QR Code</string>
+    <string name="receipt_thank_you">Thank you for buying a school uniform in MCS Tayuman! Wish you a good luck and have a great school year!</string>
+    <string name="btn_download_receipt">PRINT / DOWNLOAD RECEIPT</string>
 </resources>
