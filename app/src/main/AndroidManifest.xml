@@ -9,16 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
         <activity
-            android:name="quarter2.com.example.myapplication.minipeta3.Dimasangal_Login"
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name="quarter2.com.example.myapplication.minipeta3.Dimasangal_Login"
+            android:exported="false" />
+        <activity
+            android:name=".LOGINSCREEN"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".LOGIN"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
