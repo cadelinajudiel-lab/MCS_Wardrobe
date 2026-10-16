@@ -113,8 +113,8 @@ public class login extends AppCompatActivity {
 
         Toast.makeText(this, "Login Successful! Welcome " + email, Toast.LENGTH_SHORT).show();
 
-        // Navigate to PlaceOrder Activity
-        Intent intent = new Intent(login.this, PlaceOrder.class);
+        // Navigate to StoreTab Activity
+        Intent intent = new Intent(login.this, StoreTab.class);
         intent.putExtra("USER_EMAIL", email);
         startActivity(intent);
     }
@@ -200,8 +200,8 @@ public class login extends AppCompatActivity {
     private void handleSocialLogin(String provider) {
         Toast.makeText(this, "Signing in with " + provider + "...", Toast.LENGTH_SHORT).show();
 
-        // Simulate successful social authentication and navigate to PlaceOrder
-        Intent intent = new Intent(login.this, PlaceOrder.class);
+        // Navigate to StoreTab Activity
+        Intent intent = new Intent(login.this, StoreTab.class);
         intent.putExtra("USER_EMAIL", provider.toLowerCase() + "_user@example.com");
         startActivity(intent);
     }

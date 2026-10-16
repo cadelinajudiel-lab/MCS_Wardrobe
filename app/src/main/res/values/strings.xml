@@ -37,4 +37,29 @@
     <string name="receipt_qr_code_label">QR Code</string>
     <string name="receipt_thank_you">Thank you for buying a school uniform in MCS Tayuman! Wish you a good luck and have a great school year!</string>
     <string name="btn_download_receipt">PRINT / DOWNLOAD RECEIPT</string>
+
+    <!-- Store Tab Strings -->
+    <string name="welcome_back">WELCOME BACK</string>
+    <string name="user_name">GILBERT BALDEZ</string>
+    <string name="search_hint">WHAT\'S ON YOUR MIND?</string>
+    <string name="tab_all_products">ALL PRODUCTS</string>
+    <string name="tab_blouse">BLOUSE</string>
+    <string name="tab_skirts">SKIRTS</string>
+    <string name="promo_title_1">MALE SHS POLO SET</string>
+    <string name="promo_discount_1">40% DISCOUNT</string>
+    <string name="promo_title_2">FEMALE UNIFORM SET</string>
+    <string name="promo_discount_2">20% DISCOUNT</string>
+    <string name="btn_add_to_cart">ADD TO CART 🛒</string>
+    <string name="featured_product_header">FEATURED PRODUCT</string>
+    <string name="more_link">More ></string>
+    <string name="stock_50">50 STOCKS LEFT</string>
+    <string name="stock_70">70 STOCKS LEFT</string>
+    <string name="rating_4_5">★ 4.5 || 600 Review</string>
+    <string name="rating_4_7">★ 4.7 || 678 Review</string>
+    <string name="product_shs_skirt">SHS SKIRT</string>
+    <string name="product_shs_polo">SHS POLO</string>
+    <string name="nav_home">HOME</string>
+    <string name="nav_place_order">PLACE ORDER</string>
+    <string name="nav_add_to_cart">ADD TO CART</string>
+    <string name="nav_profile">PROFILE</string>
 </resources>

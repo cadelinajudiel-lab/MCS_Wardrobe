@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".StoreTab"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".PlaceOrder"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
