@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/placeorder_background"
+    tools:context=".Lao_AddToCartBackground">
+
+    <!-- Background Watermark Logo Layer -->
+    <ImageView
+        android:id="@+id/bg_logo"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_gravity="center"
+        android:alpha="0.25"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_1" />
+
+    <!-- Foreground Content ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Top Title Bubble Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/txt_cart_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/lao_cart_title"
+                    android:textColor="#2D1B69"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Cart Items Container Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#4CA6FF"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <!-- Item 1: SHS BLOUSE FEMALE (S) -->
+                    <LinearLayout
+                        android:id="@+id/layout_item_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#E1F5FE"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <CheckBox
+                            android:id="@+id/cb_item_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:buttonTint="#2E7D32" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/lao_item_blouse"
+                            android:textColor="#000000"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_delete_1"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/lao_cancel"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_trash" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#4CA6FF" />
+
+                    <!-- Item 2: SHS SKIRT (XS) -->
+                    <LinearLayout
+                        android:id="@+id/layout_item_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <CheckBox
+                            android:id="@+id/cb_item_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:buttonTint="#000000" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/lao_item_skirt"
+                            android:textColor="#000000"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_delete_2"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/lao_cancel"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_trash" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#4CA6FF" />
+
+                    <!-- Item 3: SHS P. E. (M) -->
+                    <LinearLayout
+                        android:id="@+id/layout_item_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <CheckBox
+                            android:id="@+id/cb_item_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:buttonTint="#000000" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/lao_item_pe"
+                            android:textColor="#000000"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_delete_3"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/lao_cancel"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_trash" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#4CA6FF" />
+
+                    <!-- Item 4: ACTIVITY SHIRT (M) -->
+                    <LinearLayout
+                        android:id="@+id/layout_item_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <CheckBox
+                            android:id="@+id/cb_item_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:buttonTint="#000000" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/lao_item_activity_shirt"
+                            android:textColor="#000000"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_delete_4"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/lao_cancel"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_trash" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Total Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/txt_total_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/lao_total"
+                    android:textColor="#000000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="160dp"
+                    android:layout_height="56dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="0dp">
+
+                    <TextView
+                        android:id="@+id/txt_total_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/lao_default_total"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Bottom Action Buttons: Purchase & Cancel -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_purchase"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_order_button"
+                    android:gravity="center"
+                    android:text="@string/lao_purchase"
+                    android:textAllCaps="false"
+                    android:textColor="#2E7D32"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_order_button"
+                    android:gravity="center"
+                    android:text="@string/lao_cancel"
+                    android:textAllCaps="false"
+                    android:textColor="#D32F2F"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
