@@ -26,6 +26,10 @@
             android:name=".GenerateReceipt"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Lao_AddToCartBackground"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

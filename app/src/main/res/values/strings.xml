@@ -37,4 +37,15 @@
     <string name="receipt_qr_code_label">QR Code</string>
     <string name="receipt_thank_you">Thank you for buying a school uniform in MCS Tayuman! Wish you a good luck and have a great school year!</string>
     <string name="btn_download_receipt">PRINT / DOWNLOAD RECEIPT</string>
+
+    <!-- Lao Add To Cart Screen Strings -->
+    <string name="lao_cart_title">Add to cart</string>
+    <string name="lao_item_blouse">SHS BLOUSE FEMALE (S)</string>
+    <string name="lao_item_skirt">SHS SKIRT (XS)</string>
+    <string name="lao_item_pe">SHS P. E. (M)</string>
+    <string name="lao_item_activity_shirt">ACTIVITY SHIRT (M)</string>
+    <string name="lao_total">TOTAL:</string>
+    <string name="lao_default_total">690</string>
+    <string name="lao_purchase">Purchase</string>
+    <string name="lao_cancel">Cancel</string>
 </resources>
