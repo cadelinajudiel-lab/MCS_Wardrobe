@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +33,10 @@ public class StoreTab extends AppCompatActivity {
         Button btnCartProduct2 = findViewById(R.id.btnCartProduct2);
 
         // Bottom Navigation Bar
-        LinearLayout navHome = findViewById(R.id.navHome);
-        LinearLayout navPlaceOrder = findViewById(R.id.navPlaceOrder);
-        LinearLayout navCart = findViewById(R.id.navCart);
-        LinearLayout navProfile = findViewById(R.id.navProfile);
+        TextView navHome = findViewById(R.id.navHome);
+        TextView navPlaceOrder = findViewById(R.id.navPlaceOrder);
+        TextView navCart = findViewById(R.id.navCart);
+        TextView navProfile = findViewById(R.id.navProfile);
 
         // Top Actions Listeners
         if (btnChat != null) {
