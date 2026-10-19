@@ -40,9 +40,9 @@
                     app:strokeWidth="0dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:id="@+id/imageView12"
+                        android:layout_width="55dp"
+                        android:layout_height="42dp"
                         tools:srcCompat="@tools:sample/avatars" />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -304,8 +304,8 @@
                             </LinearLayout>
 
                             <ImageView
-                                android:layout_width="140dp"
-                                android:layout_height="140dp"
+                                android:layout_width="124dp"
+                                android:layout_height="105dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:contentDescription="@null"
@@ -365,163 +365,428 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:orientation="vertical">
 
-                <!-- Product Card 1: SHS SKIRT -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardProduct1"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    app:cardBackgroundColor="#F5F5F0"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="3dp"
-                    app:strokeWidth="0dp">
+                <!-- Row 1: SHS SKIRT & SHS POLO -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="12dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:baselineAligned="false">
+                    <!-- Product Card 1: SHS SKIRT -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProduct1"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#F5F5F0"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeWidth="0dp">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="110dp"
-                            android:contentDescription="@null"
-                            android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/shsskirt" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/stock_50"
-                            android:textColor="#D32F2F"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/rating_4_5"
-                            android:textColor="#004CB3"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="bottom">
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:baselineAligned="false">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:contentDescription="@null"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/shsskirt" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_toStartOf="@id/btnCartProduct1"
-                                android:layout_centerVertical="true"
-                                android:text="@string/product_shs_skirt"
-                                android:textColor="#000000"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/stock_50"
+                                android:textColor="#D32F2F"
                                 android:textSize="11sp"
                                 android:textStyle="bold" />
-
-                            <androidx.appcompat.widget.AppCompatButton
-                                android:id="@+id/btnCartProduct1"
-                                android:layout_width="85dp"
-                                android:layout_height="50dp"
-                                android:layout_alignParentEnd="true"
-                                android:background="@drawable/bg_yellow_button"
-                                android:padding="0dp"
-                                android:text="@string/btn_add_to_cart"
-                                android:textColor="#000000"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Product Card 2: SHS POLO -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardProduct2"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    app:cardBackgroundColor="#F5F5F0"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="3dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:baselineAligned="false">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="110dp"
-                            android:contentDescription="@null"
-                            android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/shsmaleunif" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/stock_70"
-                            android:textColor="#D32F2F"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/rating_4_7"
-                            android:textColor="#004CB3"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="bottom">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_toStartOf="@id/btnCartProduct2"
-                                android:layout_centerVertical="true"
-                                android:text="@string/product_shs_polo"
-                                android:textColor="#000000"
+                                android:text="@string/rating_4_5"
+                                android:textColor="#004CB3"
                                 android:textSize="11sp"
                                 android:textStyle="bold" />
 
-                            <androidx.appcompat.widget.AppCompatButton
-                                android:id="@+id/btnCartProduct2"
-                                android:layout_width="100dp"
-                                android:layout_height="49dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="0dp"
-                                android:background="@drawable/bg_yellow_button"
-                                android:padding="0dp"
-                                android:text="@string/btn_add_to_cart"
-                                android:textColor="#000000"
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_toStartOf="@id/btnCartProduct1"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/product_shs_skirt"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btnCartProduct1"
+                                    android:layout_width="85dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:background="@drawable/bg_yellow_button"
+                                    android:padding="0dp"
+                                    android:text="@string/btn_add_to_cart"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Product Card 2: SHS POLO -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProduct2"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="#F5F5F0"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:baselineAligned="false">
+
+                            <ImageView
+                                android:id="@+id/imageView10"
+                                android:layout_width="171dp"
+                                android:layout_height="102dp"
+                                app:srcCompat="@drawable/img" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/stock_70"
+                                android:textColor="#D32F2F"
                                 android:textSize="11sp"
                                 android:textStyle="bold" />
 
-                        </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_4_7"
+                                android:textColor="#004CB3"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
 
-                    </LinearLayout>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom">
 
-                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_toStartOf="@id/btnCartProduct2"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/product_shs_polo"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btnCartProduct2"
+                                    android:layout_width="100dp"
+                                    android:layout_height="49dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/bg_yellow_button"
+                                    android:padding="0dp"
+                                    android:text="@string/btn_add_to_cart"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Row 2: ACTIVITY SHIRT -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <!-- Product Card 3: ACTIVITY SHIRT -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProduct3"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#F5F5F0"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:baselineAligned="false"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:id="@+id/imageView7"
+                                android:layout_width="166dp"
+                                android:layout_height="121dp"
+                                app:srcCompat="@drawable/activity_shirt_img" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/stock_75"
+                                android:textColor="#D32F2F"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_4_5"
+                                android:textColor="#004CB3"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/btnCartProduct3"
+                                    android:text="@string/product_activity_shirt"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btnCartProduct3"
+                                    android:layout_width="85dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/bg_yellow_button"
+                                    android:padding="0dp"
+                                    android:text="@string/btn_add_to_cart"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Product Card 4: SHS UNIFORM MALE PANTS -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProduct4"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="#F5F5F0"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:baselineAligned="false">
+
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="167dp"
+                                android:layout_height="121dp"
+                                app:srcCompat="@drawable/shspants" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/stock_60"
+                                android:textColor="#D32F2F"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_4_0"
+                                android:textColor="#004CB3"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_toStartOf="@id/btnCartProduct4"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/product_shs_male_pants"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btnCartProduct4"
+                                    android:layout_width="85dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/bg_yellow_button"
+                                    android:padding="0dp"
+                                    android:text="@string/btn_add_to_cart"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Row 3: SHS PE PANTS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginTop="12dp">
+
+                    <!-- Product Card 5: SHS PE PANTS -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProduct5"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#F5F5F0"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:baselineAligned="false">
+
+                            <ImageView
+                                android:id="@+id/imageView9"
+                                android:layout_width="170dp"
+                                android:layout_height="139dp"
+                                app:srcCompat="@drawable/peshirt" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/stock_50"
+                                android:textColor="#D32F2F"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_4_1"
+                                android:textColor="#004CB3"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_toStartOf="@id/btnCartProduct5"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/product_shs_pe_pants"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btnCartProduct5"
+                                    android:layout_width="85dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/bg_yellow_button"
+                                    android:padding="0dp"
+                                    android:text="@string/btn_add_to_cart"
+                                    android:textColor="#000000"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Spacer for 2-column alignment -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

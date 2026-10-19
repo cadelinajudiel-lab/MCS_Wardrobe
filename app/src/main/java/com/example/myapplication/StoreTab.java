@@ -31,6 +31,9 @@ public class StoreTab extends AppCompatActivity {
         Button btnPromoCart2 = findViewById(R.id.btnPromoCart2);
         Button btnCartProduct1 = findViewById(R.id.btnCartProduct1);
         Button btnCartProduct2 = findViewById(R.id.btnCartProduct2);
+        Button btnCartProduct3 = findViewById(R.id.btnCartProduct3);
+        Button btnCartProduct4 = findViewById(R.id.btnCartProduct4);
+        Button btnCartProduct5 = findViewById(R.id.btnCartProduct5);
 
         // Bottom Navigation Bar
         TextView navHome = findViewById(R.id.navHome);
@@ -128,6 +131,24 @@ public class StoreTab extends AppCompatActivity {
         if (btnCartProduct2 != null) {
             btnCartProduct2.setOnClickListener(v ->
                 Toast.makeText(StoreTab.this, "Added SHS Polo to Cart!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        if (btnCartProduct3 != null) {
+            btnCartProduct3.setOnClickListener(v ->
+                Toast.makeText(StoreTab.this, "Added Activity Shirt to Cart!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        if (btnCartProduct4 != null) {
+            btnCartProduct4.setOnClickListener(v ->
+                Toast.makeText(StoreTab.this, "Added SHS Uniform Male Pants to Cart!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        if (btnCartProduct5 != null) {
+            btnCartProduct5.setOnClickListener(v ->
+                Toast.makeText(StoreTab.this, "Added SHS PE Shirt to Cart!", Toast.LENGTH_SHORT).show()
             );
         }
 

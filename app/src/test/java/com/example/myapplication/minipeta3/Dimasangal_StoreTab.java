@@ -18,6 +18,9 @@ public class Dimasangal_StoreTab {
             displayProduct(101, "P.E. Shirt", 350.75, 50, "Medium");
             displayProduct(102, "School Blouse", 420.50, 20, "Small");
             displayProduct(103, "Necktie", 150.00, 0, "Standard");
+            displayProduct(104, "Activity Shirt", 380.00, 75, "Medium");
+            displayProduct(105, "SHS Uniform Male Pants", 480.00, 60, "Medium");
+            displayProduct(106, "SHS PE Shirt", 350.00, 50, "Medium");
 
         } else {
             System.out.println("The store tab is currently closed.");

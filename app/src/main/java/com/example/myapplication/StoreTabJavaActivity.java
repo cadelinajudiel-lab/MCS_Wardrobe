@@ -2,12 +2,15 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -110,14 +113,14 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvWelcome.setText(R.string.welcome_back);
         tvWelcome.setTextColor(Color.parseColor("#FFFFFF"));
         tvWelcome.setTextSize(12);
-        tvWelcome.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvWelcome.setTypeface(null, Typeface.BOLD);
 
         TextView tvUserName = new TextView(this);
         tvUserName.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tvUserName.setText(R.string.user_name);
         tvUserName.setTextColor(Color.parseColor("#FFFFFF"));
         tvUserName.setTextSize(18);
-        tvUserName.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvUserName.setTypeface(null, Typeface.BOLD);
 
         textInfoLayout.addView(tvWelcome);
         textInfoLayout.addView(tvUserName);
@@ -163,7 +166,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         etSearch.setHintTextColor(Color.parseColor("#757575"));
         etSearch.setTextColor(Color.parseColor("#000000"));
         etSearch.setTextSize(13);
-        etSearch.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
+        etSearch.setInputType(InputType.TYPE_CLASS_TEXT);
 
         searchInputWrapper.addView(ivSearchIcon);
         searchInputWrapper.addView(etSearch);
@@ -250,7 +253,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvMore.setText(R.string.more_link);
         tvMore.setTextColor(Color.parseColor("#004CB3"));
         tvMore.setTextSize(16);
-        tvMore.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvMore.setTypeface(null, Typeface.BOLD);
 
         TextView tvFeaturedTitle = new TextView(this);
         RelativeLayout.LayoutParams titleLp = new RelativeLayout.LayoutParams(
@@ -262,18 +265,24 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvFeaturedTitle.setText(R.string.featured_product_header);
         tvFeaturedTitle.setTextColor(Color.WHITE);
         tvFeaturedTitle.setTextSize(18);
-        tvFeaturedTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvFeaturedTitle.setTypeface(null, Typeface.BOLD);
 
         featuredHeaderLayout.addView(tvFeaturedTitle);
         featuredHeaderLayout.addView(tvMore);
 
         // 6. Featured Products Grid (2 Columns)
-        LinearLayout productsGrid = new LinearLayout(this);
-        productsGrid.setLayoutParams(new ViewGroup.LayoutParams(
+        LinearLayout productsGridContainer = new LinearLayout(this);
+        productsGridContainer.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        productsGrid.setOrientation(LinearLayout.HORIZONTAL);
-        productsGrid.setBaselineAligned(false);
+        productsGridContainer.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout productsRow1 = new LinearLayout(this);
+        productsRow1.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        productsRow1.setOrientation(LinearLayout.HORIZONTAL);
+        productsRow1.setBaselineAligned(false);
 
         // Product Card 1: SHS SKIRT
         MaterialCardView cardProduct1 = createProductCard(R.drawable.shsskirt, R.string.stock_50, R.string.rating_4_5, R.string.product_shs_skirt);
@@ -288,8 +297,59 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         gridLp2.setMargins(dpToPx(6), 0, 0, 0);
         cardProduct2.setLayoutParams(gridLp2);
 
-        productsGrid.addView(cardProduct1);
-        productsGrid.addView(cardProduct2);
+        productsRow1.addView(cardProduct1);
+        productsRow1.addView(cardProduct2);
+
+        LinearLayout productsRow2 = new LinearLayout(this);
+        LinearLayout.LayoutParams row2Params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        row2Params.topMargin = dpToPx(12);
+        productsRow2.setLayoutParams(row2Params);
+        productsRow2.setOrientation(LinearLayout.HORIZONTAL);
+        productsRow2.setBaselineAligned(false);
+
+        // Product Card 3: ACTIVITY SHIRT
+        MaterialCardView cardProduct3 = createProductCard(R.drawable.activityshirt, R.string.stock_75, R.string.rating_4_5, R.string.product_activity_shirt);
+        LinearLayout.LayoutParams gridLp3 = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
+        gridLp3.setMargins(0, 0, dpToPx(6), 0);
+        cardProduct3.setLayoutParams(gridLp3);
+
+        // Product Card 4: SHS UNIFORM MALE PANTS
+        MaterialCardView cardProduct4 = createProductCard(R.drawable.malepants, R.string.stock_60, R.string.rating_4_0, R.string.product_shs_male_pants);
+        LinearLayout.LayoutParams gridLp4 = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
+        gridLp4.setMargins(dpToPx(6), 0, 0, 0);
+        cardProduct4.setLayoutParams(gridLp4);
+
+        productsRow2.addView(cardProduct3);
+        productsRow2.addView(cardProduct4);
+
+        LinearLayout productsRow3 = new LinearLayout(this);
+        LinearLayout.LayoutParams row3Params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        row3Params.topMargin = dpToPx(12);
+        productsRow3.setLayoutParams(row3Params);
+        productsRow3.setOrientation(LinearLayout.HORIZONTAL);
+        productsRow3.setBaselineAligned(false);
+
+        // Product Card 5: SHS PE PANTS
+        MaterialCardView cardProduct5 = createProductCard(R.drawable.pepants, R.string.stock_50, R.string.rating_4_1, R.string.product_shs_pe_pants);
+        LinearLayout.LayoutParams gridLp5 = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
+        gridLp5.setMargins(0, 0, dpToPx(6), 0);
+        cardProduct5.setLayoutParams(gridLp5);
+
+        View spacer = new View(this);
+        LinearLayout.LayoutParams spacerLp = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
+        spacerLp.setMargins(dpToPx(6), 0, 0, 0);
+        spacer.setLayoutParams(spacerLp);
+
+        productsRow3.addView(cardProduct5);
+        productsRow3.addView(spacer);
+
+        productsGridContainer.addView(productsRow1);
+        productsGridContainer.addView(productsRow2);
+        productsGridContainer.addView(productsRow3);
 
         // Assemble content layout
         contentLayout.addView(headerLayout);
@@ -297,7 +357,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         contentLayout.addView(categoryLayout);
         contentLayout.addView(promoScroll);
         contentLayout.addView(featuredHeaderLayout);
-        contentLayout.addView(productsGrid);
+        contentLayout.addView(productsGridContainer);
 
         scrollView.addView(contentLayout);
 
@@ -354,11 +414,23 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         // Product Add to Cart buttons
         Button btnCartProduct1 = cardProduct1.findViewById(R.id.btnCartProduct1);
         Button btnCartProduct2 = cardProduct2.findViewById(R.id.btnCartProduct2);
+        Button btnCartProduct3 = cardProduct3.findViewById(R.id.btnCartProduct3);
+        Button btnCartProduct4 = cardProduct4.findViewById(R.id.btnCartProduct4);
+        Button btnCartProduct5 = cardProduct5.findViewById(R.id.btnCartProduct5);
         if (btnCartProduct1 != null) {
             btnCartProduct1.setOnClickListener(v -> Toast.makeText(this, "Added SHS Skirt to Cart!", Toast.LENGTH_SHORT).show());
         }
         if (btnCartProduct2 != null) {
             btnCartProduct2.setOnClickListener(v -> Toast.makeText(this, "Added SHS Polo to Cart!", Toast.LENGTH_SHORT).show());
+        }
+        if (btnCartProduct3 != null) {
+            btnCartProduct3.setOnClickListener(v -> Toast.makeText(this, "Added Activity Shirt to Cart!", Toast.LENGTH_SHORT).show());
+        }
+        if (btnCartProduct4 != null) {
+            btnCartProduct4.setOnClickListener(v -> Toast.makeText(this, "Added SHS Uniform Male Pants to Cart!", Toast.LENGTH_SHORT).show());
+        }
+        if (btnCartProduct5 != null) {
+            btnCartProduct5.setOnClickListener(v -> Toast.makeText(this, "Added SHS PE Shirt to Cart!", Toast.LENGTH_SHORT).show());
         }
 
         navPlaceOrder.setOnClickListener(v -> startActivity(new Intent(this, PlaceOrder.class)));
@@ -483,8 +555,12 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         AppCompatButton btnCart = new AppCompatButton(this);
         if (stockRes == R.string.stock_50) {
             btnCart.setId(R.id.btnCartProduct1);
-        } else {
+        } else if (stockRes == R.string.stock_70) {
             btnCart.setId(R.id.btnCartProduct2);
+        } else if (stockRes == R.string.stock_75) {
+            btnCart.setId(R.id.btnCartProduct3);
+        } else {
+            btnCart.setId(R.id.btnCartProduct4);
         }
         RelativeLayout.LayoutParams btnLp = new RelativeLayout.LayoutParams(dpToPx(72), dpToPx(28));
         btnLp.addRule(RelativeLayout.ALIGN_PARENT_END);
