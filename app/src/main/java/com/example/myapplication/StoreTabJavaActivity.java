@@ -316,7 +316,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         cardProduct3.setLayoutParams(gridLp3);
 
         // Product Card 4: SHS UNIFORM MALE PANTS
-        MaterialCardView cardProduct4 = createProductCard(R.drawable.malepants, R.string.stock_60, R.string.rating_4_0, R.string.product_shs_male_pants);
+        MaterialCardView cardProduct4 = createProductCard(R.drawable.shspants, R.string.stock_60, R.string.rating_4_0, R.string.product_shs_male_pants);
         LinearLayout.LayoutParams gridLp4 = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
         gridLp4.setMargins(dpToPx(6), 0, 0, 0);
         cardProduct4.setLayoutParams(gridLp4);
@@ -334,7 +334,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         productsRow3.setBaselineAligned(false);
 
         // Product Card 5: SHS PE PANTS
-        MaterialCardView cardProduct5 = createProductCard(R.drawable.pepants, R.string.stock_50, R.string.rating_4_1, R.string.product_shs_pe_pants);
+        MaterialCardView cardProduct5 = createProductCard(R.drawable.peshirt, R.string.stock_50, R.string.rating_4_1, R.string.product_shs_pe_pants);
         LinearLayout.LayoutParams gridLp5 = new LinearLayout.LayoutParams(0, dpToPx(220), 1f);
         gridLp5.setMargins(0, 0, dpToPx(6), 0);
         cardProduct5.setLayoutParams(gridLp5);
