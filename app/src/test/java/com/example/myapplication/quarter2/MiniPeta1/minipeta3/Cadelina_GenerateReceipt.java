@@ -1,4 +1,4 @@
-package com.example.myapplication.minipeta3;
+package com.example.myapplication.quarter2.MiniPeta1.minipeta3;
 
 import org.junit.Test;
 import java.util.Scanner;
