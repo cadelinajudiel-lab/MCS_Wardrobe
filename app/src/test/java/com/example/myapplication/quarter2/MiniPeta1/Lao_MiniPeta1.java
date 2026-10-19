@@ -1,4 +1,4 @@
-package com.example.myapplication.quarter2;
+package com.example.myapplication.quarter2.MiniPeta1;
 
 import org.junit.Test;
 public class Lao_MiniPeta1 {

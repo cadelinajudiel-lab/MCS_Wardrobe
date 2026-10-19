@@ -1,4 +1,4 @@
-package practical.exam;
+package com.example.myapplication.quarter2.MiniPeta1.Practical_Exam;
 
 public class Lao_ThemeParkTest {
     private boolean isEngineRunning = false;

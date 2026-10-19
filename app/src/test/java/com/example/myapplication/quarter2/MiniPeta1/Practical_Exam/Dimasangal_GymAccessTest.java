@@ -1,4 +1,4 @@
-package practical.exam;
+package com.example.myapplication.quarter2.MiniPeta1.Practical_Exam;
 
 import org.junit.Test;
 
