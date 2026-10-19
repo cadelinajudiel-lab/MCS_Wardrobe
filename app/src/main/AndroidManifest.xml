@@ -34,6 +34,10 @@
             android:name=".Lao_AddToCartBackground"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".PaymentMethod"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
