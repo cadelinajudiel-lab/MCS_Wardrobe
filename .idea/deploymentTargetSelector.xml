@@ -6,7 +6,7 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="login">
+      <SelectionState runConfigName="PaymentMethod">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
