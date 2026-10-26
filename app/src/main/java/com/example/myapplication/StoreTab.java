@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,11 +36,11 @@ public class StoreTab extends AppCompatActivity {
         Button btnCartProduct4 = findViewById(R.id.btnCartProduct4);
         Button btnCartProduct5 = findViewById(R.id.btnCartProduct5);
 
-        // Bottom Navigation Bar
-        TextView navHome = findViewById(R.id.navHome);
-        TextView navPlaceOrder = findViewById(R.id.navPlaceOrder);
-        TextView navCart = findViewById(R.id.navCart);
-        TextView navProfile = findViewById(R.id.navProfile);
+        // Bottom Navigation Bar Items
+        View navHome = findViewById(R.id.navHome);
+        View navPlaceOrder = findViewById(R.id.navPlaceOrder);
+        View navCart = findViewById(R.id.navCart);
+        View navProfile = findViewById(R.id.navProfile);
 
         // Top Actions Listeners
         if (btnChat != null) {
@@ -109,48 +110,20 @@ public class StoreTab extends AppCompatActivity {
             });
         }
 
-        // Add To Cart Listeners
-        if (btnPromoCart1 != null) {
-            btnPromoCart1.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added Male SHS Polo Set to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
+        // Add To Cart Listeners -> Navigates to AddToCart Activity (Lao_AddToCartBackground)
+        View.OnClickListener addToCartAction = v -> {
+            Toast.makeText(StoreTab.this, "Opening Add to Cart...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(StoreTab.this, Lao_AddToCartBackground.class);
+            startActivity(intent);
+        };
 
-        if (btnPromoCart2 != null) {
-            btnPromoCart2.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added Female Uniform Set to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        if (btnCartProduct1 != null) {
-            btnCartProduct1.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added SHS Skirt to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        if (btnCartProduct2 != null) {
-            btnCartProduct2.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added SHS Polo to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        if (btnCartProduct3 != null) {
-            btnCartProduct3.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added Activity Shirt to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        if (btnCartProduct4 != null) {
-            btnCartProduct4.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added SHS Uniform Male Pants to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        if (btnCartProduct5 != null) {
-            btnCartProduct5.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Added SHS PE Shirt to Cart!", Toast.LENGTH_SHORT).show()
-            );
-        }
+        if (btnPromoCart1 != null) btnPromoCart1.setOnClickListener(addToCartAction);
+        if (btnPromoCart2 != null) btnPromoCart2.setOnClickListener(addToCartAction);
+        if (btnCartProduct1 != null) btnCartProduct1.setOnClickListener(addToCartAction);
+        if (btnCartProduct2 != null) btnCartProduct2.setOnClickListener(addToCartAction);
+        if (btnCartProduct3 != null) btnCartProduct3.setOnClickListener(addToCartAction);
+        if (btnCartProduct4 != null) btnCartProduct4.setOnClickListener(addToCartAction);
+        if (btnCartProduct5 != null) btnCartProduct5.setOnClickListener(addToCartAction);
 
         // Bottom Navigation Bar Navigation
         if (navHome != null) {
@@ -167,9 +140,10 @@ public class StoreTab extends AppCompatActivity {
         }
 
         if (navCart != null) {
-            navCart.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Shopping Cart Opened", Toast.LENGTH_SHORT).show()
-            );
+            navCart.setOnClickListener(v -> {
+                Intent intent = new Intent(StoreTab.this, Lao_AddToCartBackground.class);
+                startActivity(intent);
+            });
         }
 
         if (navProfile != null) {

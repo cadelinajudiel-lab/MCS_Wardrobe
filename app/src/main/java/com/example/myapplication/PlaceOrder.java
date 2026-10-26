@@ -14,12 +14,12 @@ public class PlaceOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
 
-        // Handle Place Order button click -> Navigates to GenerateReceipt screen
+        // Handle Place Order button click -> Navigates to PaymentMethod Activity
         Button btnPlaceOrder = findViewById(R.id.btn_place_order);
         if (btnPlaceOrder != null) {
             btnPlaceOrder.setOnClickListener(v -> {
-                Toast.makeText(PlaceOrder.this, "Order Placed Successfully! Generating receipt...", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PlaceOrder.this, GenerateReceipt.class);
+                Toast.makeText(PlaceOrder.this, "Proceeding to Payment Method...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PlaceOrder.this, PaymentMethod.class);
                 startActivity(intent);
             });
         }
