@@ -80,4 +80,22 @@
     <string name="lao_default_total">₱2,250.00</string>
     <string name="lao_purchase">Purchase</string>
     <string name="lao_cancel">Cancel</string>
+    <string name="thank_you_title">THANK YOU</string>
+    <string name="thank_you_subtitle">FOR YOUR PURCHASE</string>
+    <string name="btn_receipt_label">Receipt</string>
+
+    <!-- Edit Profile Strings -->
+    <string name="profile_screen_title">Edit Profile</string>
+    <string name="profile_edit">Edit</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_bio">Bio</string>
+    <string name="profile_gender">Gender</string>
+    <string name="profile_birthday">Birthday</string>
+    <string name="profile_phone">Phone</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_set_now">Set Now ></string>
+    <string name="profile_verify_now">Verify Now</string>
+    <string name="profile_question_mark">&#63;</string>
+    <string name="profile_verified">Verified</string>
+    <string name="no_product_available">No product available</string>
 </resources>

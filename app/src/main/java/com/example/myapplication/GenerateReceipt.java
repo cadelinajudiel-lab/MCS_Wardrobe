@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,11 +20,15 @@ public class GenerateReceipt extends AppCompatActivity {
         MaterialCardView cardQrCode = findViewById(R.id.cardQrCode);
         ImageView ivReceiptLogo = findViewById(R.id.ivReceiptLogo);
 
-        // Handle Print / Download Receipt action
+        // Handle Print / Download Receipt action -> Returns to Store Tab
         if (btnPrintReceipt != null) {
-            btnPrintReceipt.setOnClickListener(v ->
-                Toast.makeText(GenerateReceipt.this, "Printing / Saving Receipt to Device...", Toast.LENGTH_SHORT).show()
-            );
+            btnPrintReceipt.setOnClickListener(v -> {
+                Toast.makeText(GenerateReceipt.this, "Receipt Printed! Returning to Store...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GenerateReceipt.this, StoreTab.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Handle QR Code click action
