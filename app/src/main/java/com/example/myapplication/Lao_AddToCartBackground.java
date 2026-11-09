@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,13 +23,41 @@ import java.util.ArrayList;
 
 public class Lao_AddToCartBackground extends AppCompatActivity {
 
-    public static boolean deleted1 = false;
-    public static boolean deleted2 = false;
-    public static boolean deleted3 = false;
-    public static boolean deleted4 = false;
+    public static class CartItem {
+        public String title;
+        public int price;
+        public int originalPrice;
+        public int imageRes;
+        public boolean isSelected = true;
 
-    private LinearLayout layoutItem1, layoutItem2, layoutItem3, layoutItem4;
-    private CheckBox cbItem1, cbItem2, cbItem3, cbItem4;
+        public CartItem(String title, int price, int originalPrice, int imageRes) {
+            this.title = title;
+            this.price = price;
+            this.originalPrice = originalPrice;
+            this.imageRes = imageRes;
+        }
+    }
+
+    public static ArrayList<CartItem> cartItems = new ArrayList<>();
+
+    static {
+        if (cartItems.isEmpty()) {
+            cartItems.add(new CartItem("SHS POLO", 650, 650, R.drawable.img));
+            cartItems.add(new CartItem("SHS SKIRT", 690, 690, R.drawable.shsskirt));
+            cartItems.add(new CartItem("SHS PE SHIRT", 450, 450, R.drawable.peshirt));
+            cartItems.add(new CartItem("ACTIVITY SHIRT", 250, 250, R.drawable.activity_shirt_img));
+        }
+    }
+
+    public static void addCartItem(String title, int price, int originalPrice, int imageRes) {
+        if (cartItems == null) {
+            cartItems = new ArrayList<>();
+        }
+        // Add new item at the TOP (index 0) so newest is on top and old is at bottom
+        cartItems.add(0, new CartItem(title, price, originalPrice, imageRes));
+    }
+
+    private LinearLayout containerCartItems;
     private TextView txtTotalValue;
 
     @Override
@@ -41,79 +72,12 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
             return insets;
         });
 
-        layoutItem1 = findViewById(R.id.layout_item_1);
-        layoutItem2 = findViewById(R.id.layout_item_2);
-        layoutItem3 = findViewById(R.id.layout_item_3);
-        layoutItem4 = findViewById(R.id.layout_item_4);
-
-        cbItem1 = findViewById(R.id.cb_item_1);
-        cbItem2 = findViewById(R.id.cb_item_2);
-        cbItem3 = findViewById(R.id.cb_item_3);
-        cbItem4 = findViewById(R.id.cb_item_4);
-
-        ImageView btnDelete1 = findViewById(R.id.btn_delete_1);
-        ImageView btnDelete2 = findViewById(R.id.btn_delete_2);
-        ImageView btnDelete3 = findViewById(R.id.btn_delete_3);
-        ImageView btnDelete4 = findViewById(R.id.btn_delete_4);
-
+        containerCartItems = findViewById(R.id.container_cart_items);
         txtTotalValue = findViewById(R.id.txt_total_value);
         Button btnPurchase = findViewById(R.id.btn_purchase);
         Button btnCancel = findViewById(R.id.btn_cancel);
 
-        // Restore visibility based on static deleted flags
-        if (deleted1 && layoutItem1 != null) layoutItem1.setVisibility(View.GONE);
-        if (deleted2 && layoutItem2 != null) layoutItem2.setVisibility(View.GONE);
-        if (deleted3 && layoutItem3 != null) layoutItem3.setVisibility(View.GONE);
-        if (deleted4 && layoutItem4 != null) layoutItem4.setVisibility(View.GONE);
-
-        updateTotal();
-
-        // Checkbox listeners
-        if (cbItem1 != null) cbItem1.setOnCheckedChangeListener((buttonView, isChecked) -> updateTotal());
-        if (cbItem2 != null) cbItem2.setOnCheckedChangeListener((buttonView, isChecked) -> updateTotal());
-        if (cbItem3 != null) cbItem3.setOnCheckedChangeListener((buttonView, isChecked) -> updateTotal());
-        if (cbItem4 != null) cbItem4.setOnCheckedChangeListener((buttonView, isChecked) -> updateTotal());
-
-        // Delete button listeners
-        if (btnDelete1 != null) {
-            btnDelete1.setOnClickListener(v -> {
-                deleted1 = true;
-                if (layoutItem1 != null) layoutItem1.setVisibility(View.GONE);
-                if (cbItem1 != null) cbItem1.setChecked(false);
-                updateTotal();
-                Toast.makeText(this, "Item 1 removed from cart", Toast.LENGTH_SHORT).show();
-            });
-        }
-
-        if (btnDelete2 != null) {
-            btnDelete2.setOnClickListener(v -> {
-                deleted2 = true;
-                if (layoutItem2 != null) layoutItem2.setVisibility(View.GONE);
-                if (cbItem2 != null) cbItem2.setChecked(false);
-                updateTotal();
-                Toast.makeText(this, "Item 2 removed from cart", Toast.LENGTH_SHORT).show();
-            });
-        }
-
-        if (btnDelete3 != null) {
-            btnDelete3.setOnClickListener(v -> {
-                deleted3 = true;
-                if (layoutItem3 != null) layoutItem3.setVisibility(View.GONE);
-                if (cbItem3 != null) cbItem3.setChecked(false);
-                updateTotal();
-                Toast.makeText(this, "Item 3 removed from cart", Toast.LENGTH_SHORT).show();
-            });
-        }
-
-        if (btnDelete4 != null) {
-            btnDelete4.setOnClickListener(v -> {
-                deleted4 = true;
-                if (layoutItem4 != null) layoutItem4.setVisibility(View.GONE);
-                if (cbItem4 != null) cbItem4.setChecked(false);
-                updateTotal();
-                Toast.makeText(this, "Item 4 removed from cart", Toast.LENGTH_SHORT).show();
-            });
-        }
+        populateCartViews();
 
         if (btnPurchase != null) {
             btnPurchase.setOnClickListener(v -> {
@@ -121,30 +85,16 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
                 ArrayList<Integer> images = new ArrayList<>();
                 ArrayList<String> descs = new ArrayList<>();
                 ArrayList<Integer> prices = new ArrayList<>();
+                ArrayList<Integer> originalPrices = new ArrayList<>();
 
-                if (!deleted1 && cbItem1 != null && cbItem1.isChecked()) {
-                    titles.add("SHS BLOUSE FEMALE (S)");
-                    images.add(R.drawable.img);
-                    descs.add("Stay neat, comfortable, and ready for class with this classic long sleeve school blouse. Made from soft, breathable, and durable fabric.");
-                    prices.add(650);
-                }
-                if (!deleted2 && cbItem2 != null && cbItem2.isChecked()) {
-                    titles.add("SHS SKIRT (XS)");
-                    images.add(R.drawable.shsskirt);
-                    descs.add("Official Manila Cathedral School Senior High School Skirt, made of durable blue fabric tailored for comfortable daily wear.");
-                    prices.add(690);
-                }
-                if (!deleted3 && cbItem3 != null && cbItem3.isChecked()) {
-                    titles.add("SHS P. E. (M)");
-                    images.add(R.drawable.peshirt);
-                    descs.add("Official Manila Cathedral School Physical Education uniform shirt, breathable and lightweight.");
-                    prices.add(450);
-                }
-                if (!deleted4 && cbItem4 != null && cbItem4.isChecked()) {
-                    titles.add("ACTIVITY SHIRT (M)");
-                    images.add(R.drawable.activity_shirt_img);
-                    descs.add("Official Manila Cathedral School Activity Shirt for school events and extracurriculars.");
-                    prices.add(250);
+                for (CartItem item : cartItems) {
+                    if (item.isSelected) {
+                        titles.add(item.title);
+                        images.add(item.imageRes);
+                        descs.add("Official Manila Cathedral School uniform item: " + item.title);
+                        prices.add(item.price);
+                        originalPrices.add(item.originalPrice);
+                    }
                 }
 
                 if (titles.isEmpty()) {
@@ -158,6 +108,7 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
                 intent.putIntegerArrayListExtra("product_images", images);
                 intent.putStringArrayListExtra("product_descs", descs);
                 intent.putIntegerArrayListExtra("product_prices", prices);
+                intent.putIntegerArrayListExtra("product_original_prices", originalPrices);
                 intent.putExtra("product_title", titles.get(0));
                 intent.putExtra("product_image", images.get(0));
                 intent.putExtra("product_desc", descs.get(0));
@@ -170,15 +121,114 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
         }
     }
 
+    private void populateCartViews() {
+        if (containerCartItems == null) return;
+        containerCartItems.removeAllViews();
+
+        for (int i = 0; i < cartItems.size(); i++) {
+            CartItem item = cartItems.get(i);
+
+            LinearLayout row = new LinearLayout(this);
+            row.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setGravity(Gravity.CENTER_VERTICAL);
+            row.setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12));
+            row.setBackgroundColor(i % 2 == 0 ? 0xFFE1F5FE : 0xFFFFFFFF);
+
+            CheckBox checkBox = new CheckBox(this);
+            checkBox.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
+            checkBox.setChecked(item.isSelected);
+            checkBox.setButtonTintList(ColorStateList.valueOf(0xFF2E7D32));
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                item.isSelected = isChecked;
+                updateTotal();
+            });
+
+            TextView tvTitle = new TextView(this);
+            LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1f
+            );
+            tvParams.setMargins(dpToPx(8), 0, 0, 0);
+            tvTitle.setLayoutParams(tvParams);
+            tvTitle.setText(item.title);
+            tvTitle.setTextColor(0xFF000000);
+            tvTitle.setTextSize(15);
+            tvTitle.setTypeface(null, Typeface.BOLD);
+
+            TextView tvPrice = new TextView(this);
+            LinearLayout.LayoutParams priceParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            priceParams.setMargins(0, 0, dpToPx(12), 0);
+            tvPrice.setLayoutParams(priceParams);
+            if (item.originalPrice > item.price) {
+                tvPrice.setText("₱" + item.price + " (Was ₱" + item.originalPrice + ")");
+            } else {
+                tvPrice.setText("₱" + item.price);
+            }
+            tvPrice.setTextColor(0xFFD32F2F);
+            tvPrice.setTextSize(14);
+            tvPrice.setTypeface(null, Typeface.BOLD);
+
+            ImageView btnDelete = new ImageView(this);
+            LinearLayout.LayoutParams delParams = new LinearLayout.LayoutParams(
+                    dpToPx(36),
+                    dpToPx(36)
+            );
+            btnDelete.setLayoutParams(delParams);
+            btnDelete.setImageResource(R.drawable.ic_trash);
+            btnDelete.setPadding(dpToPx(6), dpToPx(6), dpToPx(6), dpToPx(6));
+            btnDelete.setOnClickListener(v -> {
+                cartItems.remove(item);
+                populateCartViews();
+                updateTotal();
+                Toast.makeText(this, item.title + " removed from cart", Toast.LENGTH_SHORT).show();
+            });
+
+            row.addView(checkBox);
+            row.addView(tvTitle);
+            row.addView(tvPrice);
+            row.addView(btnDelete);
+
+            containerCartItems.addView(row);
+
+            if (i < cartItems.size() - 1) {
+                View divider = new View(this);
+                divider.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        dpToPx(1)
+                ));
+                divider.setBackgroundColor(0xFF4CA6FF);
+                containerCartItems.addView(divider);
+            }
+        }
+
+        updateTotal();
+    }
+
     private void updateTotal() {
         int total = 0;
-        if (!deleted1 && cbItem1 != null && cbItem1.isChecked()) total += 650;
-        if (!deleted2 && cbItem2 != null && cbItem2.isChecked()) total += 690;
-        if (!deleted3 && cbItem3 != null && cbItem3.isChecked()) total += 450;
-        if (!deleted4 && cbItem4 != null && cbItem4.isChecked()) total += 250;
+        for (CartItem item : cartItems) {
+            if (item.isSelected) {
+                total += item.price;
+            }
+        }
 
         if (txtTotalValue != null) {
             txtTotalValue.setText("₱" + total);
         }
+    }
+
+    private int dpToPx(int dp) {
+        return (int) (dp * getResources().getDisplayMetrics().density);
     }
 }

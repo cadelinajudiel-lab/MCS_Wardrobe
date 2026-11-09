@@ -149,6 +149,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tvCostOfPurchase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="690₱"
@@ -170,6 +171,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tvTaxFee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5₱"
@@ -198,6 +200,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="695₱"

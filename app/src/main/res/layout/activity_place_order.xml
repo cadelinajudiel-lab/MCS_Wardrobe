@@ -38,13 +38,14 @@
                 android:layout_height="280dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="16dp"
+                android:fillViewport="true"
                 android:scrollbars="none">
 
                 <LinearLayout
                     android:id="@+id/slider_products"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <!-- Product Card -->

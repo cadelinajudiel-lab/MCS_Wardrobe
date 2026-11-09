@@ -3,6 +3,10 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +26,7 @@ public class PlaceOrder extends AppCompatActivity {
     private ArrayList<Integer> finalImages;
     private ArrayList<String> finalDescs;
     private ArrayList<Integer> finalPrices;
+    private ArrayList<Integer> finalOriginalPrices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +40,30 @@ public class PlaceOrder extends AppCompatActivity {
         ArrayList<Integer> intentImages = getIntent().getIntegerArrayListExtra("product_images");
         ArrayList<String> intentDescs = getIntent().getStringArrayListExtra("product_descs");
         ArrayList<Integer> intentPrices = getIntent().getIntegerArrayListExtra("product_prices");
+        ArrayList<Integer> intentOriginalPrices = getIntent().getIntegerArrayListExtra("product_original_prices");
 
         if (intentTitles == null || intentTitles.isEmpty()) {
             finalTitles = new ArrayList<>();
             finalImages = new ArrayList<>();
             finalDescs = new ArrayList<>();
             finalPrices = new ArrayList<>();
+            finalOriginalPrices = new ArrayList<>();
 
             String singleTitle = getIntent().getStringExtra("product_title");
             int singleImage = getIntent().getIntExtra("product_image", R.drawable.img);
             String singleDesc = getIntent().getStringExtra("product_desc");
 
-            finalTitles.add(singleTitle != null ? singleTitle : "SHS BLOUSE FEMALE (S)");
+            finalTitles.add(singleTitle != null ? singleTitle : "SHS POLO");
             finalImages.add(singleImage);
             finalDescs.add(singleDesc != null ? singleDesc : getString(R.string.product_blouse_description));
             finalPrices.add(650);
+            finalOriginalPrices.add(650);
         } else {
             finalTitles = intentTitles;
             finalImages = intentImages != null ? intentImages : new ArrayList<>();
             finalDescs = intentDescs != null ? intentDescs : new ArrayList<>();
             finalPrices = intentPrices != null ? intentPrices : new ArrayList<>();
+            finalOriginalPrices = intentOriginalPrices != null ? intentOriginalPrices : new ArrayList<>();
         }
 
         if (sliderProducts != null) {
@@ -63,6 +72,7 @@ public class PlaceOrder extends AppCompatActivity {
                 String title = finalTitles.get(i);
                 int imageRes = (i < finalImages.size() && finalImages.get(i) != null) ? finalImages.get(i) : R.drawable.img;
                 int price = (i < finalPrices.size() && finalPrices.get(i) != null) ? finalPrices.get(i) : 690;
+                int originalPrice = (i < finalOriginalPrices.size() && finalOriginalPrices.get(i) != null) ? finalOriginalPrices.get(i) : price;
 
                 // Create CardView for each product
                 MaterialCardView card = new MaterialCardView(this);
@@ -107,9 +117,18 @@ public class PlaceOrder extends AppCompatActivity {
                 tvParams.setMargins(0, dpToPx(12), 0, 0);
                 tvProdTitle.setLayoutParams(tvParams);
                 tvProdTitle.setGravity(Gravity.CENTER);
-                tvProdTitle.setText(title + "\n₱" + price);
+
+                if (originalPrice > price) {
+                    SpannableString span = new SpannableString(title + "\n₱" + price + "\n₱" + originalPrice);
+                    int startIdx = (title + "\n₱" + price + "\n").length();
+                    span.setSpan(new StrikethroughSpan(), startIdx, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new ForegroundColorSpan(0xFF888888), startIdx, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    tvProdTitle.setText(span);
+                } else {
+                    tvProdTitle.setText(title + "\n₱" + price);
+                }
                 tvProdTitle.setTextColor(0xFFD32F2F);
-                tvProdTitle.setTextSize(14);
+                tvProdTitle.setTextSize(13);
                 tvProdTitle.setTypeface(null, Typeface.BOLD);
 
                 cardInner.addView(ivProd);
@@ -131,6 +150,7 @@ public class PlaceOrder extends AppCompatActivity {
                 Intent intent = new Intent(PlaceOrder.this, PaymentMethod.class);
                 intent.putStringArrayListExtra("product_titles", finalTitles);
                 intent.putIntegerArrayListExtra("product_prices", finalPrices);
+                intent.putIntegerArrayListExtra("product_original_prices", finalOriginalPrices);
                 startActivity(intent);
             });
         }

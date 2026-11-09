@@ -2,8 +2,15 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +25,89 @@ public class StoreTab extends AppCompatActivity {
         setContentView(R.layout.activity_store_tab);
 
         updateUserName();
+
+        TextView tvPricePromo1 = findViewById(R.id.tvPricePromo1);
+        if (tvPricePromo1 != null) {
+            String text = "₱828.00\n₱1,380.00 -40%";
+            SpannableString span = new SpannableString(text);
+            int strikeStart = text.indexOf("₱1,380.00");
+            int strikeEnd = strikeStart + "₱1,380.00".length();
+            int redStart = strikeEnd;
+
+            span.setSpan(new StrikethroughSpan(), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFF888888), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFFD32F2F), redStart, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tvPricePromo1.setText(span);
+        }
+
+        TextView tvPricePromo2 = findViewById(R.id.tvPricePromo2);
+        if (tvPricePromo2 != null) {
+            String text = "₱520.00\n₱650.00 -20%";
+            SpannableString span = new SpannableString(text);
+            int strikeStart = text.indexOf("₱650.00");
+            int strikeEnd = strikeStart + "₱650.00".length();
+            int redStart = strikeEnd;
+
+            span.setSpan(new StrikethroughSpan(), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFF888888), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFFD32F2F), redStart, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tvPricePromo2.setText(span);
+        }
+
+        // Search Bar Setup
+        EditText etSearch = findViewById(R.id.etSearch);
+        View card1 = findViewById(R.id.cardProduct1);
+        View card2 = findViewById(R.id.cardProduct2);
+        View card3 = findViewById(R.id.cardProduct3);
+        View card4 = findViewById(R.id.cardProduct4);
+        View card5 = findViewById(R.id.cardProduct5);
+        TextView tvNoProduct = findViewById(R.id.tvNoProduct);
+
+        if (etSearch != null) {
+            etSearch.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String query = s.toString().toLowerCase().trim();
+                    boolean match1 = "shs skirt".contains(query) || "skirt".contains(query);
+                    boolean match2 = "shs polo".contains(query) || "blouse".contains(query) || "polo".contains(query);
+                    boolean match3 = "activity shirt".contains(query) || "activity".contains(query);
+                    boolean match4 = "shs male uniform".contains(query) || "pants".contains(query) || "uniform".contains(query);
+                    boolean match5 = "shs pe pants".contains(query) || "pe".contains(query);
+
+                    if (card1 != null) {
+                        card1.setVisibility(match1 ? View.VISIBLE : View.GONE);
+                        if (match1 && !query.isEmpty()) flashView(card1);
+                    }
+                    if (card2 != null) {
+                        card2.setVisibility(match2 ? View.VISIBLE : View.GONE);
+                        if (match2 && !query.isEmpty()) flashView(card2);
+                    }
+                    if (card3 != null) {
+                        card3.setVisibility(match3 ? View.VISIBLE : View.GONE);
+                        if (match3 && !query.isEmpty()) flashView(card3);
+                    }
+                    if (card4 != null) {
+                        card4.setVisibility(match4 ? View.VISIBLE : View.GONE);
+                        if (match4 && !query.isEmpty()) flashView(card4);
+                    }
+                    if (card5 != null) {
+                        card5.setVisibility(match5 ? View.VISIBLE : View.GONE);
+                        if (match5 && !query.isEmpty()) flashView(card5);
+                    }
+
+                    boolean anyMatch = match1 || match2 || match3 || match4 || match5;
+                    if (tvNoProduct != null) {
+                        tvNoProduct.setVisibility(anyMatch ? View.GONE : View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+        }
 
         // Header and Search Actions
         ImageView btnChat = findViewById(R.id.btnChat);
@@ -133,29 +223,57 @@ public class StoreTab extends AppCompatActivity {
             });
         }
 
-        // Add To Cart Listeners -> Adds product to cart without leaving Store Tab
+        // Add To Cart Listeners -> Adds product to cart without leaving Store Tab (Newest at top)
         View.OnClickListener openCartAction = v -> {
-            String productName = "School Uniform Item";
-            if (v == btnPromoCart1 || v == btnCartProduct1) {
-                productName = "Long Sleeve School Blouse";
-                Lao_AddToCartBackground.deleted1 = false;
-            } else if (v == btnPromoCart2 || v == btnCartProduct2) {
-                productName = "SHS Skirt";
-                Lao_AddToCartBackground.deleted2 = false;
+            String productName;
+            int price;
+            int originalPrice;
+            int imgRes;
+
+            if (v == btnPromoCart1) {
+                productName = "MALE SHS POLO SET";
+                price = 828;
+                originalPrice = 1380;
+                imgRes = R.drawable.shsmaleunif;
+            } else if (v == btnPromoCart2) {
+                productName = "FEMALE UNIFORM SET";
+                price = 520;
+                originalPrice = 650;
+                imgRes = R.drawable.img;
+            } else if (v == btnCartProduct1) {
+                productName = "SHS SKIRT";
+                price = 690;
+                originalPrice = 690;
+                imgRes = R.drawable.shsskirt;
+            } else if (v == btnCartProduct2) {
+                productName = "SHS POLO";
+                price = 650;
+                originalPrice = 650;
+                imgRes = R.drawable.shsmaleunif;
             } else if (v == btnCartProduct3) {
-                productName = "SHS P.E. Shirt";
-                Lao_AddToCartBackground.deleted3 = false;
+                productName = "ACTIVITY SHIRT";
+                price = 250;
+                originalPrice = 250;
+                imgRes = R.drawable.activity_shirt_img;
             } else if (v == btnCartProduct4) {
-                productName = "Activity Shirt";
-                Lao_AddToCartBackground.deleted4 = false;
+                productName = "SHS UNIFORM MALE PANTS";
+                price = 690;
+                originalPrice = 690;
+                imgRes = R.drawable.shsmaleunif;
             } else if (v == btnCartProduct5) {
-                productName = "SHS Male Uniform";
-                Lao_AddToCartBackground.deleted1 = false;
+                productName = "SHS PE SHIRT";
+                price = 450;
+                originalPrice = 450;
+                imgRes = R.drawable.peshirt;
             } else {
-                productName = "MCS School Uniform";
-                Lao_AddToCartBackground.deleted1 = false;
+                productName = "SHS POLO";
+                price = 650;
+                originalPrice = 650;
+                imgRes = R.drawable.shsmaleunif;
             }
-            Toast.makeText(StoreTab.this, "Added " + productName + " to cart!", Toast.LENGTH_SHORT).show();
+
+            Lao_AddToCartBackground.addCartItem(productName, price, originalPrice, imgRes);
+            Toast.makeText(StoreTab.this, "Added " + productName + " to cart (Top of list)!", Toast.LENGTH_SHORT).show();
         };
 
         if (btnPromoCart1 != null) btnPromoCart1.setOnClickListener(openCartAction);
@@ -196,6 +314,89 @@ public class StoreTab extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         updateUserName();
+
+        TextView tvPricePromo1 = findViewById(R.id.tvPricePromo1);
+        if (tvPricePromo1 != null) {
+            String text = "₱828.00\n₱1,380.00 -40%";
+            SpannableString span = new SpannableString(text);
+            int strikeStart = text.indexOf("₱1,380.00");
+            int strikeEnd = strikeStart + "₱1,380.00".length();
+            int redStart = strikeEnd;
+
+            span.setSpan(new StrikethroughSpan(), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFF888888), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFFD32F2F), redStart, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tvPricePromo1.setText(span);
+        }
+
+        TextView tvPricePromo2 = findViewById(R.id.tvPricePromo2);
+        if (tvPricePromo2 != null) {
+            String text = "₱520.00\n₱650.00 -20%";
+            SpannableString span = new SpannableString(text);
+            int strikeStart = text.indexOf("₱650.00");
+            int strikeEnd = strikeStart + "₱650.00".length();
+            int redStart = strikeEnd;
+
+            span.setSpan(new StrikethroughSpan(), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFF888888), strikeStart, strikeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            span.setSpan(new ForegroundColorSpan(0xFFD32F2F), redStart, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tvPricePromo2.setText(span);
+        }
+
+        // Search Bar Setup
+        EditText etSearch = findViewById(R.id.etSearch);
+        View card1 = findViewById(R.id.cardProduct1);
+        View card2 = findViewById(R.id.cardProduct2);
+        View card3 = findViewById(R.id.cardProduct3);
+        View card4 = findViewById(R.id.cardProduct4);
+        View card5 = findViewById(R.id.cardProduct5);
+        TextView tvNoProduct = findViewById(R.id.tvNoProduct);
+
+        if (etSearch != null) {
+            etSearch.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String query = s.toString().toLowerCase().trim();
+                    boolean match1 = "shs skirt".contains(query) || "skirt".contains(query);
+                    boolean match2 = "shs polo".contains(query) || "blouse".contains(query) || "polo".contains(query);
+                    boolean match3 = "activity shirt".contains(query) || "activity".contains(query);
+                    boolean match4 = "shs male uniform".contains(query) || "pants".contains(query) || "uniform".contains(query);
+                    boolean match5 = "shs pe pants".contains(query) || "pe".contains(query);
+
+                    if (card1 != null) {
+                        card1.setVisibility(match1 ? View.VISIBLE : View.GONE);
+                        if (match1 && !query.isEmpty()) flashView(card1);
+                    }
+                    if (card2 != null) {
+                        card2.setVisibility(match2 ? View.VISIBLE : View.GONE);
+                        if (match2 && !query.isEmpty()) flashView(card2);
+                    }
+                    if (card3 != null) {
+                        card3.setVisibility(match3 ? View.VISIBLE : View.GONE);
+                        if (match3 && !query.isEmpty()) flashView(card3);
+                    }
+                    if (card4 != null) {
+                        card4.setVisibility(match4 ? View.VISIBLE : View.GONE);
+                        if (match4 && !query.isEmpty()) flashView(card4);
+                    }
+                    if (card5 != null) {
+                        card5.setVisibility(match5 ? View.VISIBLE : View.GONE);
+                        if (match5 && !query.isEmpty()) flashView(card5);
+                    }
+
+                    boolean anyMatch = match1 || match2 || match3 || match4 || match5;
+                    if (tvNoProduct != null) {
+                        tvNoProduct.setVisibility(anyMatch ? View.GONE : View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+        }
     }
 
     private void updateUserName() {
@@ -205,6 +406,13 @@ public class StoreTab extends AppCompatActivity {
             if (savedName != null && !savedName.isEmpty()) {
                 tvUserName.setText(savedName);
             }
+        }
+    }
+
+    private void flashView(View v) {
+        if (v != null) {
+            v.setAlpha(0.2f);
+            v.animate().alpha(1.0f).setDuration(400).start();
         }
     }
 }
