@@ -75,7 +75,7 @@ public class StoreTab extends AppCompatActivity {
                     boolean match2 = "shs polo".contains(query) || "blouse".contains(query) || "polo".contains(query);
                     boolean match3 = "activity shirt".contains(query) || "activity".contains(query);
                     boolean match4 = "shs male uniform".contains(query) || "pants".contains(query) || "uniform".contains(query);
-                    boolean match5 = "shs pe pants".contains(query) || "pe".contains(query);
+                    boolean match5 = "shs pe shirt".contains(query) || "pe".contains(query) || "pe shirt".contains(query);
 
                     if (card1 != null) {
                         card1.setVisibility(match1 ? View.VISIBLE : View.GONE);
@@ -259,7 +259,7 @@ public class StoreTab extends AppCompatActivity {
                 productName = "SHS UNIFORM MALE PANTS";
                 price = 690;
                 originalPrice = 690;
-                imgRes = R.drawable.shsmaleunif;
+                imgRes = R.drawable.shspants;
             } else if (v == btnCartProduct5) {
                 productName = "SHS PE SHIRT";
                 price = 450;
@@ -283,6 +283,74 @@ public class StoreTab extends AppCompatActivity {
         if (btnCartProduct3 != null) btnCartProduct3.setOnClickListener(openCartAction);
         if (btnCartProduct4 != null) btnCartProduct4.setOnClickListener(openCartAction);
         if (btnCartProduct5 != null) btnCartProduct5.setOnClickListener(openCartAction);
+
+        // Product Card Clicks -> Navigates to PlaceOrder with exact product details
+        View.OnClickListener productCardClickAction = v -> {
+            String title;
+            int image;
+            int price;
+            int originalPrice;
+            String desc;
+
+            if (v == card1) {
+                title = "SHS SKIRT";
+                image = R.drawable.shsskirt;
+                price = 690;
+                originalPrice = 690;
+                desc = "Official Manila Cathedral School Senior High School Skirt. Made from high quality, breathable, and durable fabric for daily school wear.";
+            } else if (v == card2) {
+                title = "SHS POLO";
+                image = R.drawable.shsmaleunif;
+                price = 650;
+                originalPrice = 650;
+                desc = "Official Manila Cathedral School Senior High School Male Polo. Soft, breathable fabric with a clean tailored fit.";
+            } else if (v == card3) {
+                title = "ACTIVITY SHIRT";
+                image = R.drawable.activity_shirt_img;
+                price = 250;
+                originalPrice = 250;
+                desc = "Official Manila Cathedral School Activity Shirt. High-grade cotton material providing maximum comfort for campus activities and events.";
+            } else if (v == card4) {
+                title = "SHS UNIFORM MALE PANTS";
+                image = R.drawable.shspants;
+                price = 690;
+                originalPrice = 690;
+                desc = "Official Manila Cathedral School Male Uniform Pants. Tailored for comfort, durability, and a clean professional appearance.";
+            } else if (v == card5) {
+                title = "SHS PE SHIRT";
+                image = R.drawable.peshirt;
+                price = 450;
+                originalPrice = 450;
+                desc = "Official Manila Cathedral School Physical Education (PE) Shirt. Designed with quick-dry breathable fabric to keep students cool during PE classes.";
+            } else {
+                title = "SHS POLO";
+                image = R.drawable.shsmaleunif;
+                price = 650;
+                originalPrice = 650;
+                desc = "Stay neat, comfortable, and ready for class with this official Manila Cathedral School uniform item.";
+            }
+
+            if (v != null) {
+                v.animate().alpha(0.5f).setDuration(100).withEndAction(() -> {
+                    v.animate().alpha(1.0f).setDuration(100).start();
+                });
+            }
+
+            Toast.makeText(StoreTab.this, "Opening " + title + "...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(StoreTab.this, PlaceOrder.class);
+            intent.putExtra("product_title", title);
+            intent.putExtra("product_image", image);
+            intent.putExtra("product_price", price);
+            intent.putExtra("product_original_price", originalPrice);
+            intent.putExtra("product_desc", desc);
+            startActivity(intent);
+        };
+
+        if (card1 != null) card1.setOnClickListener(productCardClickAction);
+        if (card2 != null) card2.setOnClickListener(productCardClickAction);
+        if (card3 != null) card3.setOnClickListener(productCardClickAction);
+        if (card4 != null) card4.setOnClickListener(productCardClickAction);
+        if (card5 != null) card5.setOnClickListener(productCardClickAction);
 
         // Bottom Navigation Bar Navigation
         if (navHome != null) {

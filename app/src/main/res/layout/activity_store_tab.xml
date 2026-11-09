@@ -454,7 +454,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="₱690"
+                            android:text="₱690.00"
                             android:textColor="#D32F2F"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -544,7 +544,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="₱1,380"
+                            android:text="₱650.00"
                             android:textColor="#D32F2F"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -644,7 +644,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="₱250"
+                            android:text="₱250.00"
                             android:textColor="#D32F2F"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -730,7 +730,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="₱690"
+                            android:text="₱690.00"
                             android:textColor="#D32F2F"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -826,7 +826,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="₱450"
+                            android:text="₱450.00"
                             android:textColor="#D32F2F"
                             android:textSize="13sp"
                             android:textStyle="bold" />

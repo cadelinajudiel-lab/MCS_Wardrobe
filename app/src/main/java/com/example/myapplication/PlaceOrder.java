@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PlaceOrder extends AppCompatActivity {
 
@@ -50,14 +51,16 @@ public class PlaceOrder extends AppCompatActivity {
             finalOriginalPrices = new ArrayList<>();
 
             String singleTitle = getIntent().getStringExtra("product_title");
-            int singleImage = getIntent().getIntExtra("product_image", R.drawable.img);
+            int singleImage = getIntent().getIntExtra("product_image", R.drawable.shsmaleunif);
             String singleDesc = getIntent().getStringExtra("product_desc");
+            int singlePrice = getIntent().getIntExtra("product_price", 650);
+            int singleOriginalPrice = getIntent().getIntExtra("product_original_price", singlePrice);
 
             finalTitles.add(singleTitle != null ? singleTitle : "SHS POLO");
             finalImages.add(singleImage);
             finalDescs.add(singleDesc != null ? singleDesc : getString(R.string.product_blouse_description));
-            finalPrices.add(650);
-            finalOriginalPrices.add(650);
+            finalPrices.add(singlePrice);
+            finalOriginalPrices.add(singleOriginalPrice);
         } else {
             finalTitles = intentTitles;
             finalImages = intentImages != null ? intentImages : new ArrayList<>();
@@ -72,7 +75,6 @@ public class PlaceOrder extends AppCompatActivity {
                 String title = finalTitles.get(i);
                 int imageRes = (i < finalImages.size() && finalImages.get(i) != null) ? finalImages.get(i) : R.drawable.img;
                 int price = (i < finalPrices.size() && finalPrices.get(i) != null) ? finalPrices.get(i) : 690;
-                int originalPrice = (i < finalOriginalPrices.size() && finalOriginalPrices.get(i) != null) ? finalOriginalPrices.get(i) : price;
 
                 // Create CardView for each product
                 MaterialCardView card = new MaterialCardView(this);
@@ -118,15 +120,7 @@ public class PlaceOrder extends AppCompatActivity {
                 tvProdTitle.setLayoutParams(tvParams);
                 tvProdTitle.setGravity(Gravity.CENTER);
 
-                if (originalPrice > price) {
-                    SpannableString span = new SpannableString(title + "\n₱" + price + "\n₱" + originalPrice);
-                    int startIdx = (title + "\n₱" + price + "\n").length();
-                    span.setSpan(new StrikethroughSpan(), startIdx, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new ForegroundColorSpan(0xFF888888), startIdx, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    tvProdTitle.setText(span);
-                } else {
-                    tvProdTitle.setText(title + "\n₱" + price);
-                }
+                tvProdTitle.setText(String.format(Locale.getDefault(), "%s\n₱%,d.00", title, price));
                 tvProdTitle.setTextColor(0xFFD32F2F);
                 tvProdTitle.setTextSize(13);
                 tvProdTitle.setTypeface(null, Typeface.BOLD);

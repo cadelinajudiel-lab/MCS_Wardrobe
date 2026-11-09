@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Lao_AddToCartBackground extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
 
     static {
         if (cartItems.isEmpty()) {
-            cartItems.add(new CartItem("SHS POLO", 650, 650, R.drawable.img));
+            cartItems.add(new CartItem("SHS POLO", 650, 650, R.drawable.shsmaleunif));
             cartItems.add(new CartItem("SHS SKIRT", 690, 690, R.drawable.shsskirt));
             cartItems.add(new CartItem("SHS PE SHIRT", 450, 450, R.drawable.peshirt));
             cartItems.add(new CartItem("ACTIVITY SHIRT", 250, 250, R.drawable.activity_shirt_img));
@@ -170,11 +171,7 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
             );
             priceParams.setMargins(0, 0, dpToPx(12), 0);
             tvPrice.setLayoutParams(priceParams);
-            if (item.originalPrice > item.price) {
-                tvPrice.setText("₱" + item.price + " (Was ₱" + item.originalPrice + ")");
-            } else {
-                tvPrice.setText("₱" + item.price);
-            }
+            tvPrice.setText(String.format(Locale.getDefault(), "₱%,d.00", item.price));
             tvPrice.setTextColor(0xFFD32F2F);
             tvPrice.setTextSize(14);
             tvPrice.setTypeface(null, Typeface.BOLD);
@@ -224,7 +221,7 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
         }
 
         if (txtTotalValue != null) {
-            txtTotalValue.setText("₱" + total);
+            txtTotalValue.setText(String.format(Locale.getDefault(), "₱%,d.00", total));
         }
     }
 

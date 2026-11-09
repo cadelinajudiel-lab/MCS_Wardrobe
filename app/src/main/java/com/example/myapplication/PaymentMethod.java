@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PaymentMethod extends AppCompatActivity {
 
@@ -29,26 +30,54 @@ public class PaymentMethod extends AppCompatActivity {
         RadioButton rbVisa = findViewById(R.id.rbVisa);
         Button btnContinue = findViewById(R.id.btnContinue);
 
+        TextView tvOriginalPrice = findViewById(R.id.tvOriginalPrice);
+        TextView tvDiscountSavings = findViewById(R.id.tvDiscountSavings);
         TextView tvCostOfPurchase = findViewById(R.id.tvCostOfPurchase);
         TextView tvTaxFee = findViewById(R.id.tvTaxFee);
         TextView tvTotal = findViewById(R.id.tvTotal);
+        View rowOriginalPrice = findViewById(R.id.rowOriginalPrice);
+        View rowDiscount = findViewById(R.id.rowDiscount);
 
         ArrayList<String> titles = getIntent().getStringArrayListExtra("product_titles");
         ArrayList<Integer> prices = getIntent().getIntegerArrayListExtra("product_prices");
+        ArrayList<Integer> originalPrices = getIntent().getIntegerArrayListExtra("product_original_prices");
 
         int costOfPurchase = 690;
+        int originalTotal = 690;
+
         if (prices != null && !prices.isEmpty()) {
             costOfPurchase = 0;
-            for (Integer p : prices) {
+            originalTotal = 0;
+            for (int i = 0; i < prices.size(); i++) {
+                Integer p = prices.get(i);
                 if (p != null) costOfPurchase += p;
+
+                Integer origP = (originalPrices != null && i < originalPrices.size()) ? originalPrices.get(i) : p;
+                if (origP != null) {
+                    originalTotal += origP;
+                } else if (p != null) {
+                    originalTotal += p;
+                }
             }
         }
+
+        int discountSavings = originalTotal - costOfPurchase;
         int taxFee = 5;
         int total = costOfPurchase + taxFee;
 
-        if (tvCostOfPurchase != null) tvCostOfPurchase.setText(costOfPurchase + "₱");
-        if (tvTaxFee != null) tvTaxFee.setText(taxFee + "₱");
-        if (tvTotal != null) tvTotal.setText(total + "₱");
+        if (discountSavings > 0) {
+            if (rowOriginalPrice != null) rowOriginalPrice.setVisibility(View.VISIBLE);
+            if (rowDiscount != null) rowDiscount.setVisibility(View.VISIBLE);
+            if (tvOriginalPrice != null) tvOriginalPrice.setText(String.format(Locale.getDefault(), "₱%,d.00", originalTotal));
+            if (tvDiscountSavings != null) tvDiscountSavings.setText(String.format(Locale.getDefault(), "-₱%,d.00", discountSavings));
+        } else {
+            if (rowOriginalPrice != null) rowOriginalPrice.setVisibility(View.GONE);
+            if (rowDiscount != null) rowDiscount.setVisibility(View.GONE);
+        }
+
+        if (tvCostOfPurchase != null) tvCostOfPurchase.setText(String.format(Locale.getDefault(), "₱%,d.00", costOfPurchase));
+        if (tvTaxFee != null) tvTaxFee.setText("₱5.00");
+        if (tvTotal != null) tvTotal.setText(String.format(Locale.getDefault(), "₱%,d.00", total));
 
         View.OnClickListener selectionListener = v -> {
             boolean isGCash = (v == optionGCash || v == rbGCash);

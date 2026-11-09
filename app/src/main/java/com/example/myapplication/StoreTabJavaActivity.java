@@ -405,10 +405,16 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         Button btnPromoCart1 = promoCard1.findViewById(R.id.btnPromoCart1);
         Button btnPromoCart2 = promoCard2.findViewById(R.id.btnPromoCart2);
         if (btnPromoCart1 != null) {
-            btnPromoCart1.setOnClickListener(v -> Toast.makeText(this, "Added Male SHS Polo Set to Cart!", Toast.LENGTH_SHORT).show());
+            btnPromoCart1.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("MALE SHS POLO SET", 828, 1380, R.drawable.shsmaleunif);
+                Toast.makeText(this, "Added MALE SHS POLO SET to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
         if (btnPromoCart2 != null) {
-            btnPromoCart2.setOnClickListener(v -> Toast.makeText(this, "Added Female Uniform Set to Cart!", Toast.LENGTH_SHORT).show());
+            btnPromoCart2.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("FEMALE UNIFORM SET", 520, 650, R.drawable.img);
+                Toast.makeText(this, "Added FEMALE UNIFORM SET to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
 
         // Product Add to Cart buttons
@@ -418,20 +424,42 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         Button btnCartProduct4 = cardProduct4.findViewById(R.id.btnCartProduct4);
         Button btnCartProduct5 = cardProduct5.findViewById(R.id.btnCartProduct5);
         if (btnCartProduct1 != null) {
-            btnCartProduct1.setOnClickListener(v -> Toast.makeText(this, "Added SHS Skirt to Cart!", Toast.LENGTH_SHORT).show());
+            btnCartProduct1.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("SHS SKIRT", 690, 690, R.drawable.shsskirt);
+                Toast.makeText(this, "Added SHS Skirt to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
         if (btnCartProduct2 != null) {
-            btnCartProduct2.setOnClickListener(v -> Toast.makeText(this, "Added SHS Polo to Cart!", Toast.LENGTH_SHORT).show());
+            btnCartProduct2.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("SHS POLO", 650, 650, R.drawable.shsmaleunif);
+                Toast.makeText(this, "Added SHS Polo to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
         if (btnCartProduct3 != null) {
-            btnCartProduct3.setOnClickListener(v -> Toast.makeText(this, "Added Activity Shirt to Cart!", Toast.LENGTH_SHORT).show());
+            btnCartProduct3.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("ACTIVITY SHIRT", 250, 250, R.drawable.activity_shirt_img);
+                Toast.makeText(this, "Added Activity Shirt to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
         if (btnCartProduct4 != null) {
-            btnCartProduct4.setOnClickListener(v -> Toast.makeText(this, "Added SHS Uniform Male Pants to Cart!", Toast.LENGTH_SHORT).show());
+            btnCartProduct4.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("SHS UNIFORM MALE PANTS", 690, 690, R.drawable.shspants);
+                Toast.makeText(this, "Added SHS Uniform Male Pants to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
         if (btnCartProduct5 != null) {
-            btnCartProduct5.setOnClickListener(v -> Toast.makeText(this, "Added SHS PE Shirt to Cart!", Toast.LENGTH_SHORT).show());
+            btnCartProduct5.setOnClickListener(v -> {
+                Lao_AddToCartBackground.addCartItem("SHS PE SHIRT", 450, 450, R.drawable.peshirt);
+                Toast.makeText(this, "Added SHS PE Shirt to Cart!", Toast.LENGTH_SHORT).show();
+            });
         }
+
+        // Card Click Listeners -> Open PlaceOrder with exact product details
+        cardProduct1.setOnClickListener(v -> openPlaceOrder("SHS SKIRT", R.drawable.shsskirt, 690, 690, "Official Manila Cathedral School Senior High School Skirt. Made from high quality, breathable, and durable fabric."));
+        cardProduct2.setOnClickListener(v -> openPlaceOrder("SHS POLO", R.drawable.shsmaleunif, 650, 650, "Official Manila Cathedral School Senior High School Male Polo. Soft, breathable fabric with a clean tailored fit."));
+        cardProduct3.setOnClickListener(v -> openPlaceOrder("ACTIVITY SHIRT", R.drawable.activity_shirt_img, 250, 250, "Official Manila Cathedral School Activity Shirt. High-grade cotton material providing maximum comfort."));
+        cardProduct4.setOnClickListener(v -> openPlaceOrder("SHS UNIFORM MALE PANTS", R.drawable.shspants, 690, 690, "Official Manila Cathedral School Male Uniform Pants. Tailored for comfort, durability, and a clean professional appearance."));
+        cardProduct5.setOnClickListener(v -> openPlaceOrder("SHS PE SHIRT", R.drawable.peshirt, 450, 450, "Official Manila Cathedral School Physical Education (PE) Shirt. Designed with quick-dry breathable fabric."));
 
         navPlaceOrder.setOnClickListener(v -> startActivity(new Intent(this, PlaceOrder.class)));
         navHome.setOnClickListener(v -> Toast.makeText(this, "You are on Home Store Tab", Toast.LENGTH_SHORT).show());
@@ -467,7 +495,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvTitle.setText(titleRes);
         tvTitle.setTextColor(Color.WHITE);
         tvTitle.setTextSize(11);
-        tvTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvTitle.setTypeface(null, Typeface.BOLD);
 
         TextView tvDiscount = new TextView(this);
         ViewGroup.MarginLayoutParams discLp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -476,7 +504,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvDiscount.setText(discountRes);
         tvDiscount.setTextColor(Color.WHITE);
         tvDiscount.setTextSize(11);
-        tvDiscount.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvDiscount.setTypeface(null, Typeface.BOLD);
 
         badge.addView(tvTitle);
         badge.addView(tvDiscount);
@@ -504,7 +532,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         btnCart.setText(R.string.btn_add_to_cart);
         btnCart.setTextColor(Color.BLACK);
         btnCart.setTextSize(11);
-        btnCart.setTypeface(null, android.graphics.Typeface.BOLD);
+        btnCart.setTypeface(null, Typeface.BOLD);
 
         innerLayout.addView(badge);
         innerLayout.addView(imgPromo);
@@ -539,14 +567,14 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvStock.setText(stockRes);
         tvStock.setTextColor(Color.parseColor("#D32F2F"));
         tvStock.setTextSize(11);
-        tvStock.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvStock.setTypeface(null, Typeface.BOLD);
 
         TextView tvRating = new TextView(this);
         tvRating.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tvRating.setText(ratingRes);
         tvRating.setTextColor(Color.parseColor("#004CB3"));
         tvRating.setTextSize(11);
-        tvRating.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvRating.setTypeface(null, Typeface.BOLD);
 
         RelativeLayout bottomRow = new RelativeLayout(this);
         bottomRow.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -570,7 +598,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         btnCart.setText(R.string.btn_add_to_cart);
         btnCart.setTextColor(Color.BLACK);
         btnCart.setTextSize(11);
-        btnCart.setTypeface(null, android.graphics.Typeface.BOLD);
+        btnCart.setTypeface(null, Typeface.BOLD);
 
         TextView tvName = new TextView(this);
         RelativeLayout.LayoutParams nameLp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -581,7 +609,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tvName.setText(nameRes);
         tvName.setTextColor(Color.BLACK);
         tvName.setTextSize(11);
-        tvName.setTypeface(null, android.graphics.Typeface.BOLD);
+        tvName.setTypeface(null, Typeface.BOLD);
 
         bottomRow.addView(tvName);
         bottomRow.addView(btnCart);
@@ -603,7 +631,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tv.setText(title);
         tv.setTextColor(textColor);
         tv.setTextSize(11);
-        tv.setTypeface(null, android.graphics.Typeface.BOLD);
+        tv.setTypeface(null, Typeface.BOLD);
         tv.setCompoundDrawablesWithIntrinsicBounds(0, iconRes, 0, 0);
         tv.setCompoundDrawablePadding(dpToPx(2));
         return tv;
@@ -614,7 +642,7 @@ public class StoreTabJavaActivity extends AppCompatActivity {
         tv.setGravity(Gravity.CENTER);
         tv.setText(text);
         tv.setTextSize(12);
-        tv.setTypeface(null, android.graphics.Typeface.BOLD);
+        tv.setTypeface(null, Typeface.BOLD);
         if (isSelected) {
             tv.setBackgroundResource(R.drawable.bg_pill_dark);
             tv.setTextColor(Color.WHITE);
@@ -627,5 +655,16 @@ public class StoreTabJavaActivity extends AppCompatActivity {
 
     private int dpToPx(int dp) {
         return (int) (dp * getResources().getDisplayMetrics().density);
+    }
+
+    private void openPlaceOrder(String title, int image, int price, int originalPrice, String desc) {
+        Toast.makeText(this, "Opening " + title + "...", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, PlaceOrder.class);
+        intent.putExtra("product_title", title);
+        intent.putExtra("product_image", image);
+        intent.putExtra("product_price", price);
+        intent.putExtra("product_original_price", originalPrice);
+        intent.putExtra("product_desc", desc);
+        startActivity(intent);
     }
 }
