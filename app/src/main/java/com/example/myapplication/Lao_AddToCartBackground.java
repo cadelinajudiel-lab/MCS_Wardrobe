@@ -16,12 +16,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class Lao_AddToCartBackground extends AppCompatActivity {
 
-    private static boolean deleted1 = false;
-    private static boolean deleted2 = false;
-    private static boolean deleted3 = false;
-    private static boolean deleted4 = false;
+    public static boolean deleted1 = false;
+    public static boolean deleted2 = false;
+    public static boolean deleted3 = false;
+    public static boolean deleted4 = false;
 
     private LinearLayout layoutItem1, layoutItem2, layoutItem3, layoutItem4;
     private CheckBox cbItem1, cbItem2, cbItem3, cbItem4;
@@ -115,8 +117,50 @@ public class Lao_AddToCartBackground extends AppCompatActivity {
 
         if (btnPurchase != null) {
             btnPurchase.setOnClickListener(v -> {
-                Toast.makeText(this, "Proceeding to Place Order...", Toast.LENGTH_SHORT).show();
+                ArrayList<String> titles = new ArrayList<>();
+                ArrayList<Integer> images = new ArrayList<>();
+                ArrayList<String> descs = new ArrayList<>();
+                ArrayList<Integer> prices = new ArrayList<>();
+
+                if (!deleted1 && cbItem1 != null && cbItem1.isChecked()) {
+                    titles.add("SHS BLOUSE FEMALE (S)");
+                    images.add(R.drawable.img);
+                    descs.add("Stay neat, comfortable, and ready for class with this classic long sleeve school blouse. Made from soft, breathable, and durable fabric.");
+                    prices.add(650);
+                }
+                if (!deleted2 && cbItem2 != null && cbItem2.isChecked()) {
+                    titles.add("SHS SKIRT (XS)");
+                    images.add(R.drawable.shsskirt);
+                    descs.add("Official Manila Cathedral School Senior High School Skirt, made of durable blue fabric tailored for comfortable daily wear.");
+                    prices.add(690);
+                }
+                if (!deleted3 && cbItem3 != null && cbItem3.isChecked()) {
+                    titles.add("SHS P. E. (M)");
+                    images.add(R.drawable.peshirt);
+                    descs.add("Official Manila Cathedral School Physical Education uniform shirt, breathable and lightweight.");
+                    prices.add(450);
+                }
+                if (!deleted4 && cbItem4 != null && cbItem4.isChecked()) {
+                    titles.add("ACTIVITY SHIRT (M)");
+                    images.add(R.drawable.activity_shirt_img);
+                    descs.add("Official Manila Cathedral School Activity Shirt for school events and extracurriculars.");
+                    prices.add(250);
+                }
+
+                if (titles.isEmpty()) {
+                    Toast.makeText(this, "Please select at least one item to purchase.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Toast.makeText(this, "Proceeding to Place Order (" + titles.size() + " items)...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Lao_AddToCartBackground.this, PlaceOrder.class);
+                intent.putStringArrayListExtra("product_titles", titles);
+                intent.putIntegerArrayListExtra("product_images", images);
+                intent.putStringArrayListExtra("product_descs", descs);
+                intent.putIntegerArrayListExtra("product_prices", prices);
+                intent.putExtra("product_title", titles.get(0));
+                intent.putExtra("product_image", images.get(0));
+                intent.putExtra("product_desc", descs.get(0));
                 startActivity(intent);
             });
         }

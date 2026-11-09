@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class PaymentMethod extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,9 @@ public class PaymentMethod extends AppCompatActivity {
 
         RadioGroup rgPaymentMethods = findViewById(R.id.rgPaymentMethods);
         Button btnContinue = findViewById(R.id.btnContinue);
+
+        ArrayList<String> titles = getIntent().getStringArrayListExtra("product_titles");
+        ArrayList<Integer> prices = getIntent().getIntegerArrayListExtra("product_prices");
 
         if (btnContinue != null) {
             btnContinue.setOnClickListener(v -> {
@@ -32,6 +37,8 @@ public class PaymentMethod extends AppCompatActivity {
 
                 Toast.makeText(PaymentMethod.this, "Payment processed via " + selectedMethod, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PaymentMethod.this, GenerateReceipt.class);
+                if (titles != null) intent.putStringArrayListExtra("product_titles", titles);
+                if (prices != null) intent.putIntegerArrayListExtra("product_prices", prices);
                 startActivity(intent);
             });
         }

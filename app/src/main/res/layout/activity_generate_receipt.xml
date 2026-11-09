@@ -67,6 +67,7 @@
 
                 <!-- Item Details Section -->
                 <LinearLayout
+                    android:id="@+id/layout_receipt_items"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -81,63 +82,13 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_item_name"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    <!-- Dynamic item rows will be added here programmatically -->
 
                     <TextView
+                        android:id="@+id/tv_receipt_vat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_size"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_color"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_quantity"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_unit_price"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/receipt_price_vat_inc"
-                        android:textColor="#212121"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="6dp"
                         android:text="@string/receipt_vat"
                         android:textColor="#212121"
@@ -145,6 +96,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_receipt_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/receipt_total"

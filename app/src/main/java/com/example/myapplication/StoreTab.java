@@ -133,11 +133,29 @@ public class StoreTab extends AppCompatActivity {
             });
         }
 
-        // Add To Cart Listeners -> Navigates to Shopping Cart Activity (Lao_AddToCartBackground)
+        // Add To Cart Listeners -> Adds product to cart without leaving Store Tab
         View.OnClickListener openCartAction = v -> {
-            Toast.makeText(StoreTab.this, "Opening Cart...", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(StoreTab.this, Lao_AddToCartBackground.class);
-            startActivity(intent);
+            String productName = "School Uniform Item";
+            if (v == btnPromoCart1 || v == btnCartProduct1) {
+                productName = "Long Sleeve School Blouse";
+                Lao_AddToCartBackground.deleted1 = false;
+            } else if (v == btnPromoCart2 || v == btnCartProduct2) {
+                productName = "SHS Skirt";
+                Lao_AddToCartBackground.deleted2 = false;
+            } else if (v == btnCartProduct3) {
+                productName = "SHS P.E. Shirt";
+                Lao_AddToCartBackground.deleted3 = false;
+            } else if (v == btnCartProduct4) {
+                productName = "Activity Shirt";
+                Lao_AddToCartBackground.deleted4 = false;
+            } else if (v == btnCartProduct5) {
+                productName = "SHS Male Uniform";
+                Lao_AddToCartBackground.deleted1 = false;
+            } else {
+                productName = "MCS School Uniform";
+                Lao_AddToCartBackground.deleted1 = false;
+            }
+            Toast.makeText(StoreTab.this, "Added " + productName + " to cart!", Toast.LENGTH_SHORT).show();
         };
 
         if (btnPromoCart1 != null) btnPromoCart1.setOnClickListener(openCartAction);

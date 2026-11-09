@@ -20,19 +20,21 @@ public class ThankYouActivity extends AppCompatActivity {
 
         Button btnReceipt = findViewById(R.id.btn_receipt);
         if (btnReceipt != null) {
+            btnReceipt.setText(getString(R.string.return_to_store));
             btnReceipt.setOnClickListener(v -> {
                 handler.removeCallbacks(transitionRunnable);
-                openReceipt();
+                returnToStore();
             });
         }
 
-        // Flash Thank You screen for 1.8 seconds before automatically opening Receipt
-        transitionRunnable = this::openReceipt;
-        handler.postDelayed(transitionRunnable, 1800);
+        // Return to Store automatically after 2.5 seconds
+        transitionRunnable = this::returnToStore;
+        handler.postDelayed(transitionRunnable, 2500);
     }
 
-    private void openReceipt() {
-        Intent intent = new Intent(ThankYouActivity.this, GenerateReceipt.class);
+    private void returnToStore() {
+        Intent intent = new Intent(ThankYouActivity.this, StoreTab.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }

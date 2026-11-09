@@ -82,6 +82,7 @@
     <string name="lao_cancel">Cancel</string>
     <string name="thank_you_title">THANK YOU</string>
     <string name="thank_you_subtitle">FOR YOUR PURCHASE</string>
+    <string name="return_to_store">Return to Store</string>
     <string name="btn_receipt_label">Receipt</string>
 
     <!-- Edit Profile Strings -->
