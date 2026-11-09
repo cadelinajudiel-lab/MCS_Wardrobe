@@ -32,6 +32,12 @@ public class ProfileScreenActivity extends AppCompatActivity {
         }
 
         tvNameVal = findViewById(R.id.tv_name_val);
+        // Load saved name if present
+        String savedName = getSharedPreferences("UserProfile", MODE_PRIVATE).getString("user_name", null);
+        if (savedName != null && !savedName.isEmpty()) {
+            tvNameVal.setText(savedName);
+        }
+
         tvBioVal = findViewById(R.id.tv_bio_val);
         tvGenderVal = findViewById(R.id.tv_gender_val);
         tvBirthdayVal = findViewById(R.id.tv_birthday_val);
@@ -81,6 +87,12 @@ public class ProfileScreenActivity extends AppCompatActivity {
                     String value = input.getText().toString().trim();
                     if (!value.isEmpty()) {
                         targetTextView.setText(value);
+                        if (fieldName.equals("Name")) {
+                            getSharedPreferences("UserProfile", MODE_PRIVATE)
+                                    .edit()
+                                    .putString("user_name", value)
+                                    .apply();
+                        }
                         Toast.makeText(this, fieldName + " updated successfully!", Toast.LENGTH_SHORT).show();
                     }
                 })

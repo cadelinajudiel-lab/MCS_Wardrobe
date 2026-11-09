@@ -17,6 +17,8 @@ public class StoreTab extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_tab);
 
+        updateUserName();
+
         // Header and Search Actions
         ImageView btnChat = findViewById(R.id.btnChat);
         ImageView btnFilter = findViewById(R.id.btnFilter);
@@ -41,6 +43,27 @@ public class StoreTab extends AppCompatActivity {
         TextView navPlaceOrder = findViewById(R.id.navPlaceOrder);
         TextView navCart = findViewById(R.id.navCart);
         TextView navProfile = findViewById(R.id.navProfile);
+        View headerProfileLayout = findViewById(R.id.headerProfileLayout);
+
+        // Flash & Open Profile Activity Action
+        View.OnClickListener profileClickAction = v -> {
+            if (v != null) {
+                v.animate().alpha(0.2f).setDuration(120).withEndAction(() -> {
+                    v.animate().alpha(1.0f).setDuration(120).withEndAction(() -> {
+                        Toast.makeText(StoreTab.this, "Opening Profile...", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(StoreTab.this, ProfileScreenActivity.class);
+                        startActivity(intent);
+                    });
+                });
+            } else {
+                Intent intent = new Intent(StoreTab.this, ProfileScreenActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        if (headerProfileLayout != null) {
+            headerProfileLayout.setOnClickListener(profileClickAction);
+        }
 
         // Top Actions Listeners
         if (btnChat != null) {
@@ -147,9 +170,23 @@ public class StoreTab extends AppCompatActivity {
         }
 
         if (navProfile != null) {
-            navProfile.setOnClickListener(v ->
-                Toast.makeText(StoreTab.this, "Profile Tab Opened", Toast.LENGTH_SHORT).show()
-            );
+            navProfile.setOnClickListener(profileClickAction);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUserName();
+    }
+
+    private void updateUserName() {
+        TextView tvUserName = findViewById(R.id.tvUserName);
+        if (tvUserName != null) {
+            String savedName = getSharedPreferences("UserProfile", MODE_PRIVATE).getString("user_name", null);
+            if (savedName != null && !savedName.isEmpty()) {
+                tvUserName.setText(savedName);
+            }
         }
     }
 }
